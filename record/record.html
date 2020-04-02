@@ -1,0 +1,852 @@
+<!DOCKTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="style.css">
+        <title>workout recorder</title>
+    </head>
+
+    <body>
+        <!--record -->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Workout Recorder</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>write down the record of your Today's amazing workout!
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="record">
+                <h5>Body Parts</h5>
+
+                <ul style="list-style-type: none">
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open1').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Abs</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open1" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open2').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">crunch</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open2" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open3').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Back</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open3" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open4').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Dead Lift</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open4" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="60">60</option>
+                                                        <option value="80">80</option>
+                                                        <option value="100">100</option>
+                                                        <option value="120">120</option>
+                                                        <option value="140">140</option>
+                                                        <option value="160">160</option>
+                                                        <option value="180">180</option>
+                                                        <option value="200">200</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open5').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Chin ups</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open5" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open6').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Biceps</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open6" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open7').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Bicep Curl</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open7" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open8').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Chest</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open8" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open9').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Bench Press</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open9" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="60">60</option>
+                                                        <option value="80">80</option>
+                                                        <option value="100">100</option>
+                                                        <option value="120">120</option>
+                                                        <option value="140">140</option>
+                                                        <option value="160">160</option>
+                                                        <option value="180">180</option>
+                                                        <option value="200">200</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open10').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Glutes</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open10" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open11').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Hip Thrust</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open11" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="60">60</option>
+                                                        <option value="80">80</option>
+                                                        <option value="100">100</option>
+                                                        <option value="120">120</option>
+                                                        <option value="140">140</option>
+                                                        <option value="160">160</option>
+                                                        <option value="180">180</option>
+                                                        <option value="200">200</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open12').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Legs</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open12" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open13').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Squat</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open13" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="60">60</option>
+                                                        <option value="80">80</option>
+                                                        <option value="100">100</option>
+                                                        <option value="120">120</option>
+                                                        <option value="140">140</option>
+                                                        <option value="160">160</option>
+                                                        <option value="180">180</option>
+                                                        <option value="200">200</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open14').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Shoulder</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open14" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open15').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Side Raise</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open15" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                    <li>
+                        <!-- open when pushed -->
+                        <div
+                            onclick="obj=document.getElementById('open16').style; obj.display=(obj.display=='none')?'block':'none';">
+                            <a style="cursor:pointer;">Triceps</a>
+                        </div>
+                        <!--// pointer -->
+
+                        <!-- from here -->
+                        <div id="open16" style="display:none;clear:both;">
+                            <ul style="list-style-type: none">
+                                <li>
+                                    <!-- open when pushed -->
+                                    <div
+                                        onclick="obj=document.getElementById('open17').style; obj.display=(obj.display=='none')?'block':'none';">
+                                        <a style="cursor:pointer;">Cable Press Down</a>
+                                    </div>
+                                    <!--// pointer -->
+
+                                    <!-- from here -->
+                                    <div id="open17" style="display:none;clear:both;">
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="record">
+                                                    <h5>Weight</h5>
+                                                    <select id="weight">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="weight">kg</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Reps</h5>
+                                                    <select id="reps">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                    </select>
+                                                    <label for="reps">reps</label>
+                                                </div>
+                                                <div class="record">
+                                                    <h5>Sets</h5>
+                                                    <select id="sets">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <label for="sets">sets</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--write down over here-->
+                                    </div>
+                                    <!--// to there -->
+                                </li>
+                            </ul>
+                            <!--write down over here-->
+                        </div>
+                        <!--// to there -->
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </body>
+
+    </html>

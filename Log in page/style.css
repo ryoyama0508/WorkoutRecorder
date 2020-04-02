@@ -1,0 +1,31 @@
+/* adjustment */
+h1 {
+    font-size: 24;
+    margin: 0;
+}
+
+.content{
+    background-color:rgb(255, 255, 255);
+    width: 600px;
+    margin: 10px auto;
+    padding: 30px;
+    border: 3px solid #bdbdbd;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #b4b4b4;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 8px;
+}
+
+button{
+    width: 100%;
+    background-color : #24cffa;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    border-radius:3px;
+    box-shadow : 0 0 10px rgba(0,0,0,.4);
+}
