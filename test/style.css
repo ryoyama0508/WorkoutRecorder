@@ -1,41 +1,46 @@
-header{
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 100%;
-  box-shadow: none;
-  background-color: rgb(20, 23, 165);
-  position: fixed;
-  height: 60px!important;
-  overflow: hidden;
-  z-index: 10;
-  padding: 0px;
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+html, body {
+    overflow-x: hidden;
+    height: 100%;
 }
-
-body{
-  background: rgb(255, 255, 255);
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
 }
-
-header h1{
-  font-family: 'Lato', sans-serif;
-  padding: 1px;
-  color: rgb(255, 255, 255);
-  font-size: 25px;
-  font-weight: 100; line-height: 58px;
-  text-transform: capitalize;
+.header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #FC466B;
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
 }
-
-header h4{
-  font-family: 'Lato', sans-serif;
-  padding: 1px;
-  margin-top: 20px;
-  color: rgb(255, 255, 255);
-  font-size: 17px;
-  font-weight: 100;
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
 }
-  /* over there are header style */
-
-  #sidebarMenu {
+.mainInner{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.mainInner div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+}
+#sidebarMenu {
     height: 100%;
     position: fixed;
     left: 0;
@@ -108,7 +113,6 @@ input[type=checkbox] {
     float: left;
     margin-top: 3px;
 }
-/* making three diagonal line to X */
 .diagonal.part-1 {
     position: relative;
     transition: all 0.3s;
