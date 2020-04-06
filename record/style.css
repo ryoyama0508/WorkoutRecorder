@@ -1,41 +1,64 @@
-header{
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 100%;
-  box-shadow: none;
-  background-color: rgb(20, 23, 165);
-  position: fixed;
-  height: 60px!important;
-  overflow: hidden;
-  z-index: 10;
-  padding: 0px;
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+html, body {
+    overflow-x: hidden;
+    height: 100%;
 }
-
-body{
-  background: rgb(255, 255, 255);
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
 }
-
-header h1{
+.header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: rgb(27, 22, 22);
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
+}
+.header h1{
+  float: left;
   font-family: 'Lato', sans-serif;
-  padding: 1px;
+  padding-left: 150px;
   color: rgb(255, 255, 255);
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 100; line-height: 58px;
   text-transform: capitalize;
 }
 
-header h4{
+.header h4{
   font-family: 'Lato', sans-serif;
-  padding: 1px;
+  padding-left: 600px;
   margin-top: 20px;
   color: rgb(255, 255, 255);
   font-size: 17px;
   font-weight: 100;
 }
-  /* over there are header style */
-
-  #sidebarMenu {
+/* .main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+.mainInner{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.mainInner div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+} */
+#sidebarMenu {
     height: 100%;
     position: fixed;
     left: 0;
@@ -43,7 +66,7 @@ header h4{
     margin-top: 60px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+    background:  rgb(27, 22, 22);
 }
 .sidebarMenuInner{
     margin:0;
@@ -54,23 +77,33 @@ header h4{
     list-style: none;
     color: #fff;
     text-transform: uppercase;
-    font-weight: bold;
-    padding: 20px;
+    font-weight: 50;
+    padding: 13px;
     cursor: pointer;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 .sidebarMenuInner li span{
-    display: block;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.50);
+  color: rgb(255, 171, 15);
+  text-transform: uppercase;
+  font-weight: 50;
+  cursor: pointer;
+  text-decoration: none;
 }
 .sidebarMenuInner li a{
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
+  color: rgb(161, 161, 161);
+  text-transform: uppercase;
+  font-weight: 50;
+  cursor: pointer;
+  text-decoration: none;
 }
+.sidebarMenuInner li a:hover{
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 input[type="checkbox"]:checked ~ #sidebarMenu {
     transform: translateX(0);
 }
@@ -108,7 +141,6 @@ input[type=checkbox] {
     float: left;
     margin-top: 3px;
 }
-/* making three diagonal line to X */
 .diagonal.part-1 {
     position: relative;
     transition: all 0.3s;
