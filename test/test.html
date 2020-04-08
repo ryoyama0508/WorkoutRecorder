@@ -1,56 +1,37 @@
 <!DOCKTYPE html>
+    <html>
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>workout recorder</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width">
+        <title>Workout Recorder</title>
+        <title>Log in</title>
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="test.css">
     </head>
 
     <body>
-        <html>
-        <div class="header"></div>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-        <label for="openSidebarMenu" class="sidebarIconToggle">
-            <div class="spinner diagonal part-1"></div>
-            <div class="spinner horizontal"></div>
-            <div class="spinner diagonal part-2"></div>
-        </label>
-        <div id="sidebarMenu">
-            <ul class="sidebarMenuInner">
-                <li>
-                    <a href="#home" target="_blank">Home(record)</a>
-                </li>
-                <li>
-                    <a href="#Archive" target="_blank">Archive</a>
-                </li>
-                <li>
-                    <a href="#Analysis" target="_blank">Analysis</a>
-                </li>
-                <li>
-                    <a href="#Your Goal" target="_blank">Your Goal</a>
-                </li>
-                <li>
-                    <a href="#Timeline" target="_blank">Timeline</a>
-                </li>
-                <li>
-                    <a href="#Setting" target="_blank">Setting</a>
-                </li>
-            </ul>
+        <!--form page-->
+
+        <div class="header">
+            <h1>Workout Recorder</h1>
+            <h4>write down the record of your Today's amazing workout!</h4>
         </div>
-        <div id='center' class="main center">
-            <div class="mainInner">
-                <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+
+        <div class="content">
+            <h2>Log in</h2>
+            <p>write down your account info</p>
+            <div class="control">
+                <label for="mymail">mail address</label>
+                <input id="mymail" type="email" name="mymail">
             </div>
-            <div class="mainInner">
-                <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+            <div class="control">
+                <label for="passcode">password</label>
+                <input id="passcode" type="password" name="passcode">
             </div>
-            <div class="mainInner">
-                <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+            <div class="control">
+                <button
+                    onclick="window.location.href = 'ffile:///Users/ryo/WorkoutRecorder/record/record.html#home';">submit</button>
             </div>
         </div>
     </body>
