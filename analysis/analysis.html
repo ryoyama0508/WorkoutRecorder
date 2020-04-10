@@ -15,9 +15,6 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
             integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
             crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-            crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -98,48 +95,242 @@
         <div class="space">
         </div>
 
+        <div class="container">
+            <div class="row">
+                <h2>Your Weight</h2>
+            </div>
+        </div>
+        <div class="graph" style="height: 400px ;width: 700px; margin: 0 auto;">
+            <canvas id="myChart"></canvas>
+        </div>
 
-        <head>
-            <script>
-                window.onload = function () {
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        animationEnabled: true,
-                        theme: "light2",
-                        title: {
-                            text: "Body Weight"
-                        },
-                        axisY: {
-                            includeZero: false
-                        },
-                        data: [{
-                            type: "line",
-                            indexLabelFontSize: 16,
-                            dataPoints: [
-                                { y: 450 },
-                                { y: 414 },
-                                { y: 520, indexLabel: "\u2191 highest", markerColor: "red", markerType: "triangle" },
-                                { y: 460 },
-                                { y: 450 },
-                                { y: 500 },
-                                { y: 480 },
-                                { y: 480 },
-                                { y: 410, indexLabel: "\u2193 lowest", markerColor: "DarkSlateGrey", markerType: "cross" },
-                                { y: 500 },
-                                { y: 480 },
-                                { y: 510 }
-                            ]
+        <script>
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'Feburary', 'March', 'April', 'May', 'June'],
+                    datasets: [{
+                        data: [71, 74, 72, 75, 78, 73],
+                        label: "Body Weight",
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }],
+
+                    borderWidth: 1
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
                         }]
-                    });
-                    chart.render();
-
+                    }
                 }
-            </script>
-        </head>
+            });
+        </script>
 
-        <body>
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        </body>
+        <div class="space">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h2>Exercise</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm 6">
+                    <div class="graph" style="height: 250px ;width: 500px; margin: 0 auto;">
+                        <canvas id="myChartCrunch"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm 6">
+                    <div class="graph" style="height: 250px ;width: 500px; margin: 0 auto;">
+                        <canvas id="myChartDeadLift"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+        <script>
+            var ctx = document.getElementById('myChartCrunch');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'Feburary', 'March', 'April', 'May', 'June'],
+                    datasets: [{
+                        data: [10, 14, 18, 16, 14, 19],
+                        label: "Crunch",
+                        borderColor: "#3cba9f",
+                        backgroundColor: "#3cba9f",
+                        fill: false
+                    }],
+
+                    borderWidth: 1
+                },
+                options: {
+                    title: { display: true, text: "Crunch (reps)" },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+        <script>
+            var ctx = document.getElementById('myChartDeadLift');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'Feburary', 'March', 'April', 'May', 'June'],
+                    datasets: [{
+                        data: [10, 14, 18, 16, 14, 19],
+                        label: "Dead Lift",
+                        borderColor: "#c45850",
+                        backgroundColor: "#c45850",
+                        fill: false
+                    }],
+
+                    borderWidth: 1
+                },
+                options: {
+                    title: { display: true, text: "Dead Lift (1RM)" },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+        <div class="space">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm 6">
+                    <div class="graph" style="height: 250px ;width: 500px; margin: 0 auto;">
+                        <canvas id="myChartChinUp"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm 6">
+                    <div class="graph" style="height: 250px ;width: 500px; margin: 0 auto;">
+                        <canvas id="myChartDumbellCurl"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+        <script>
+            var ctx = document.getElementById('myChartChinUp');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'Feburary', 'March', 'April', 'May', 'June'],
+                    datasets: [{
+                        data: [10, 14, 18, 16, 14, 19],
+                        label: "Chin Up",
+                        borderColor: "#8e5ea2",
+                        backgroundColor: "#8e5ea2",
+                        fill: false
+                    }],
+
+                    borderWidth: 1
+                },
+                options: {
+                    title: { display: true, text: "Chin Up (reps)" },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+        <script>
+            var ctx = document.getElementById('myChartDumbellCurl');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'Feburary', 'March', 'April', 'May', 'June'],
+                    datasets: [{
+                        data: [10, 14, 18, 16, 14, 19],
+                        label: "Dumbell Curl (1RM)",
+                        borderColor: "#e8c3b9",
+                        backgroundColor: "#e8c3b9",
+                        fill: false
+                    }],
+
+                    borderWidth: 1
+                },
+                options: {
+                    title: { display: true, text: "Dumbell Curl" },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+
+        <div class="space">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h2>Your Workout Balance</h2>
+            </div>
+        </div>
+        <div class="graph" style="height: 400px ;width: 900px; margin: 0 auto;">
+            <canvas id="pie-chart"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+        <script>
+            var ctx = document.getElementById('pie-chart');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["Abs", "Back", "Biceps", "Chest", "Glutes"],
+                    datasets: [{
+                        label: "Population (millions)",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        data: [2478, 5267, 734, 784, 433]
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Don't skip leg day bro"
+                    }
+                }
+            });
+        </script>
+    </body>
 
     </html>
