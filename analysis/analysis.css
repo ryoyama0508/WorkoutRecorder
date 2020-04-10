@@ -160,6 +160,17 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     margin-top: -9px;
 }
 
-.contens{
+.contents{
     margin: 100px auto;
 }
+
+.row{
+    margin-top: 20px;
+}
+
+.space{
+    padding-top: 50px;
+    background-color: rgb(255, 255, 255);
+  }
+
+ 

@@ -58,20 +58,88 @@
             </ul>
         </div>
 
-        <div class="content">
-            <h1>Your body photos</h1>
-            <div class="images">
-                <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
-                    width="200" height="150">
-                <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
-                    width="200" height="150">
-                <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
-                    width="200" height="150">
-                <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
-                    width="200" height="150">
-            </div>
+        <div class="space">
         </div>
 
-    </body>
+        <div class="container">
+            <div class="row">
+                <h1></h1>
+            </div>
+            <div class="row">
+                <h2>Your body photos</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm 3">
+                    <div class="images">
+                        <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
+                            width="200" height="150">
+                    </div>
+                </div>
+                <div class="col-sm 3">
+                    <div class="images">
+                        <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
+                            width="200" height="150">
+                    </div>
+                </div>
+                <div class="col-sm 3">
+                    <div class="images">
+                        <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
+                            width="200" height="150">
+                    </div>
+                </div>
+                <div class="col-sm 3">
+                    <div class="images">
+                        <img src="file:///Users/ryo/Downloads/muscle%20images%20-%20Google%20Search_files/mh-muscular-man-working-out-in-gym-strong-male-torso-royalty-free-image-924491214-1557166711.jpg"
+                            width="200" height="150">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space">
+        </div>
+
+
+        <head>
+            <script>
+                window.onload = function () {
+
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        animationEnabled: true,
+                        theme: "light2",
+                        title: {
+                            text: "Body Weight"
+                        },
+                        axisY: {
+                            includeZero: false
+                        },
+                        data: [{
+                            type: "line",
+                            indexLabelFontSize: 16,
+                            dataPoints: [
+                                { y: 450 },
+                                { y: 414 },
+                                { y: 520, indexLabel: "\u2191 highest", markerColor: "red", markerType: "triangle" },
+                                { y: 460 },
+                                { y: 450 },
+                                { y: 500 },
+                                { y: 480 },
+                                { y: 480 },
+                                { y: 410, indexLabel: "\u2193 lowest", markerColor: "DarkSlateGrey", markerType: "cross" },
+                                { y: 500 },
+                                { y: 480 },
+                                { y: 510 }
+                            ]
+                        }]
+                    });
+                    chart.render();
+
+                }
+            </script>
+        </head>
+
+        <body>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </body>
 
     </html>
