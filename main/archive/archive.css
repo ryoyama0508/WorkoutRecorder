@@ -183,6 +183,7 @@ table {
   height:500px;
   border-spacing: 0;
   border-collapse: collapse;
+  border: solid;
 }
 
 td {
