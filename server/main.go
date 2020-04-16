@@ -1,29 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"time"
+	"github.com/gin-gonic/gin"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "success to connect a server")
-}
-
 func main() {
-	muxHTTP := http.NewServeMux()
-	muxHTTP.HandleFunc("/", handler)
+	router := gin.Default()
+	router.LoadHTMLGlob("../client/login/*.html")
 
-	ServerHTTP := &http.Server{
-		Addr:           ":8080",
-		Handler:        muxHTTP,
-		ReadTimeout:    10 * time.Second,
-		WriteTimeout:   10 * time.Second,
-		MaxHeaderBytes: 1 << 20,
-	}
+	router.GET("/", func(ctx *gin.Context) {
+		ctx.HTML(200, "login.html", gin.H{})
+	})
 
-	err := ServerHTTP.ListenAndServe()
-	if err != nil {
-		fmt.Println(err)
-	}
+	router.Run()
 }
