@@ -1,696 +1,696 @@
-<!DOCKTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>workout recorder</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>workout recorder</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="record.css">
+    <link rel="stylesheet" href="record.css">
 
-        <!-- Font Awesome JS -->
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-            crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-            crossorigin="anonymous"></script>
-    </head>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+</head>
 
-    <body>
-        <header></header>
-        <div class="header">
-            <h1>Workout Recorder</h1>
-            <h4>write down the record of your Today's amazing workout!</h4>
+<body>
+    <header></header>
+    <div class="header">
+        <h1>Workout Recorder</h1>
+        <h4>write down the record of your Today's amazing workout!</h4>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/home/home.html">Home</a>
+            </li>
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/record/record.html"><span>Record</span></a>
+            </li>
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/archive/archive.html">Archive</a>
+            </li>
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/analysis/analysis.html">Analysis</a>
+            </li>
+            <li>
+                <a href="#Your Goal">Your Goal</a>
+            </li>
+            <li>
+                <a href="#Setting">Setting</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="Record">Record Your Workout</div>
+    <div class="container">
+        <h3>Abs</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Crunch</p>
+            </div>
+            <div class="col-sm 3">
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
+            </div>
         </div>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-        <label for="openSidebarMenu" class="sidebarIconToggle">
-            <div class="spinner diagonal part-1"></div>
-            <div class="spinner horizontal"></div>
-            <div class="spinner diagonal part-2"></div>
-        </label>
-        <div id="sidebarMenu">
-            <ul class="sidebarMenuInner">
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/home/home.html">Home</a>
-                </li>
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/record/record.html"><span>Record</span></a>
-                </li>
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/archive/archive.html">Archive</a>
-                </li>
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/analysis/analysis.html">Analysis</a>
-                </li>
-                <li>
-                    <a href="#Your Goal">Your Goal</a>
-                </li>
-                <li>
-                    <a href="#Setting">Setting</a>
-                </li>
-            </ul>
-        </div>
+    </div>
 
-        <div class="Record">Record Your Workout</div>
-        <div class="container">
-            <h3>Abs</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Crunch</p>
-                </div>
-                <div class="col-sm 3">
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Back</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Dead Lift</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="60">60</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                    <option value="180">180</option>
+                    <option value="200">200</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
 
-        <div class="container">
-            <h3>Back</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Dead Lift</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="60">60</option>
-                        <option value="80">80</option>
-                        <option value="100">100</option>
-                        <option value="120">120</option>
-                        <option value="140">140</option>
-                        <option value="160">160</option>
-                        <option value="180">180</option>
-                        <option value="200">200</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Chin Up</p>
             </div>
-
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Chin Up</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="60">60</option>
-                        <option value="80">80</option>
-                        <option value="100">100</option>
-                        <option value="120">120</option>
-                        <option value="140">140</option>
-                        <option value="160">160</option>
-                        <option value="180">180</option>
-                        <option value="200">200</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="60">60</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                    <option value="180">180</option>
+                    <option value="200">200</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <h3>Biceps</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Dumbell Curl</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Biceps</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Dumbell Curl</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <h3>Chest</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Bench Press</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="60">60</option>
-                        <option value="80">80</option>
-                        <option value="100">100</option>
-                        <option value="120">120</option>
-                        <option value="140">140</option>
-                        <option value="160">160</option>
-                        <option value="180">180</option>
-                        <option value="200">200</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Chest</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Bench Press</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="60">60</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                    <option value="180">180</option>
+                    <option value="200">200</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <h3>Glutes</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Hip Thrust</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="60">60</option>
-                        <option value="80">80</option>
-                        <option value="100">100</option>
-                        <option value="120">120</option>
-                        <option value="140">140</option>
-                        <option value="160">160</option>
-                        <option value="180">180</option>
-                        <option value="200">200</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Glutes</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Hip Thrust</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="60">60</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                    <option value="180">180</option>
+                    <option value="200">200</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <h3>Legs</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Squat</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="60">60</option>
-                        <option value="80">80</option>
-                        <option value="100">100</option>
-                        <option value="120">120</option>
-                        <option value="140">140</option>
-                        <option value="160">160</option>
-                        <option value="180">180</option>
-                        <option value="200">200</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Legs</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Squat</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="60">60</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="120">120</option>
+                    <option value="140">140</option>
+                    <option value="160">160</option>
+                    <option value="180">180</option>
+                    <option value="200">200</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <h3>Shoulder</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Shoulder Press</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Shoulder</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Shoulder Press</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
 
-        <div class="container">
-            <h3>Triceps</h3>
-            <div class="row">
-                <div class="col-sm 3">
-                    <p>Cable Press</p>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Weight</h5>
-                    <select id="weight">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="weight">kg</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Reps</h5>
-                    <select id="reps">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                    </select>
-                    <label for="reps">reps</label>
-                </div>
-                <div class="col-sm 3">
-                    <h5>Sets</h5>
-                    <select id="sets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                    <label for="sets">sets</label>
-                </div>
+    <div class="container">
+        <h3>Triceps</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Cable Press</p>
+            </div>
+            <div class="col-sm 3">
+                <h5>Weight</h5>
+                <select id="weight">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="weight">kg</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
             </div>
         </div>
+    </div>
 
-        <div class="content">
-            <div class="control">
-                <button
-                    onclick="window.location.href = 'file:///Users/ryo/WorkoutRecorder/record/record.html';">submit</button>
-            </div>
+    <div class="content">
+        <div class="control">
+            <button
+                onclick="window.location.href = 'file:///Users/ryo/WorkoutRecorder/record/record.html';">submit</button>
         </div>
+    </div>
 
-    </body>
+</body>
 
-    </html>
+</html>

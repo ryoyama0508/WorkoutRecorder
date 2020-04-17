@@ -6,7 +6,9 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.LoadHTMLGlob("../client/login/*.html")
+	router.Static("/assets", "./assets")
+
+	router.LoadHTMLGlob("Login/*.html")
 
 	router.GET("/", func(ctx *gin.Context) {
 		ctx.HTML(200, "login.html", gin.H{})

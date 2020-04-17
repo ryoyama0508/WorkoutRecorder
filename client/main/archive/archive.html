@@ -1,152 +1,152 @@
-<!DOCKTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>workout recorder</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>workout recorder</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="archive.css">
+    <link rel="stylesheet" href="archive.css">
 
-        <!-- Font Awesome JS -->
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-            crossorigin="anonymous"></script>
-    </head>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+</head>
 
-    <body>
-        <header></header>
-        <div class="header">
-            <h1>Workout Recorder</h1>
-            <h4>write down the record of your Today's amazing workout!</h4>
+<body>
+    <header></header>
+    <div class="header">
+        <h1>Workout Recorder</h1>
+        <h4>write down the record of your Today's amazing workout!</h4>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/home/home.html">Home</a>
+            </li>
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/record/record.html">Record</a>
+            </li>
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/archive/archive.html"><span>Archive</span></a>
+            </li>
+            <li>
+                <a href="file:///Users/ryo/WorkoutRecorder/main/analysis/analysis.html">Analysis</a>
+            </li>
+            <li>
+                <a href="#Your Goal">Your Goal</a>
+            </li>
+            <li>
+                <a href="#Setting">Setting</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="space">
+    </div>
+
+    <div class="Record">Archive</div>
+
+    <div class="container">
+        <div class="row">
+            <h2>Monthly</h2>
         </div>
-        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-        <label for="openSidebarMenu" class="sidebarIconToggle">
-            <div class="spinner diagonal part-1"></div>
-            <div class="spinner horizontal"></div>
-            <div class="spinner diagonal part-2"></div>
-        </label>
-        <div id="sidebarMenu">
-            <ul class="sidebarMenuInner">
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/home/home.html">Home</a>
-                </li>
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/record/record.html">Record</a>
-                </li>
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/archive/archive.html"><span>Archive</span></a>
-                </li>
-                <li>
-                    <a href="file:///Users/ryo/WorkoutRecorder/main/analysis/analysis.html">Analysis</a>
-                </li>
-                <li>
-                    <a href="#Your Goal">Your Goal</a>
-                </li>
-                <li>
-                    <a href="#Setting">Setting</a>
-                </li>
-            </ul>
+        <div class="row">
+            <div id="calendar" style="margin: 0 auto;"></div>
         </div>
+    </div>
 
-        <div class="space">
-        </div>
+    <script>
+        const weeks = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+        const date = new Date()
+        const year = date.getFullYear()
+        const month = date.getMonth() + 1
+        const startDate = new Date(year, month - 1, 1) // 月の最初の日を取得
+        const endDate = new Date(year, month, 0) // 月の最後の日を取得
+        const endDayCount = endDate.getDate() // 月の末日
+        const startDay = startDate.getDay() // 月の最初の日の曜日を取得
+        let dayCount = 1 // 日にちのカウント
+        let calendarHtml = '' // HTMLを組み立てる変数
 
-        <div class="Record">Archive</div>
+        calendarHtml += '<h1>' + year + '/' + month + '</h1>'
+        calendarHtml += '<table>'
 
-        <div class="container">
-            <div class="row">
-                <h2>Monthly</h2>
-            </div>
-            <div class="row">
-                <div id="calendar" style="margin: 0 auto;"></div>
-            </div>
-        </div>
+        // 曜日の行を作成
+        for (let i = 0; i < weeks.length; i++) {
+            calendarHtml += '<td>' + weeks[i] + '</td>'
+        }
 
-        <script>
-            const weeks = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-            const date = new Date()
-            const year = date.getFullYear()
-            const month = date.getMonth() + 1
-            const startDate = new Date(year, month - 1, 1) // 月の最初の日を取得
-            const endDate = new Date(year, month, 0) // 月の最後の日を取得
-            const endDayCount = endDate.getDate() // 月の末日
-            const startDay = startDate.getDay() // 月の最初の日の曜日を取得
-            let dayCount = 1 // 日にちのカウント
-            let calendarHtml = '' // HTMLを組み立てる変数
+        for (let w = 0; w < 6; w++) {
+            calendarHtml += '<tr>'
 
-            calendarHtml += '<h1>' + year + '/' + month + '</h1>'
-            calendarHtml += '<table>'
-
-            // 曜日の行を作成
-            for (let i = 0; i < weeks.length; i++) {
-                calendarHtml += '<td>' + weeks[i] + '</td>'
-            }
-
-            for (let w = 0; w < 6; w++) {
-                calendarHtml += '<tr>'
-
-                for (let d = 0; d < 7; d++) {
-                    if (w == 0 && d < startDay) {
-                        // 1行目で1日の曜日の前
-                        calendarHtml += '<td></td>'
-                    } else if (dayCount > endDayCount) {
-                        // 末尾の日数を超えた
-                        calendarHtml += '<td></td>'
-                    } else {
-                        calendarHtml += '<td>' + dayCount + '</td>'
-                        dayCount++
-                    }
+            for (let d = 0; d < 7; d++) {
+                if (w == 0 && d < startDay) {
+                    // 1行目で1日の曜日の前
+                    calendarHtml += '<td></td>'
+                } else if (dayCount > endDayCount) {
+                    // 末尾の日数を超えた
+                    calendarHtml += '<td></td>'
+                } else {
+                    calendarHtml += '<td>' + dayCount + '</td>'
+                    dayCount++
                 }
-                calendarHtml += '</tr>'
             }
-            calendarHtml += '</table>'
+            calendarHtml += '</tr>'
+        }
+        calendarHtml += '</table>'
 
-            document.querySelector('#calendar').innerHTML = calendarHtml
+        document.querySelector('#calendar').innerHTML = calendarHtml
 
-        </script>
+    </script>
 
-        <div class="space">
+    <div class="space">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2>Weekly</h2>
         </div>
-
-        <div class="container">
-            <div class="row">
-                <h2>Weekly</h2>
-            </div>
-            <div class="row">
-                <div id="calendar2" style="margin: 0 auto;"></div>
-            </div>
+        <div class="row">
+            <div id="calendar2" style="margin: 0 auto;"></div>
         </div>
+    </div>
 
-        <script>
-            //find today
-            const today = new Date()
-            const todayNum = today.getDate() //	Get the day as a number (1-31)
-            const weekStartDay = todayNum - 6 //firstday of calendar
+    <script>
+        //find today
+        const today = new Date()
+        const todayNum = today.getDate() //	Get the day as a number (1-31)
+        const weekStartDay = todayNum - 6 //firstday of calendar
 
-            let weekCalendarHtml = '' // HTML start
+        let weekCalendarHtml = '' // HTML start
 
-            //calendar table create
-            weekCalendarHtml += '<table style= "height: 70px;">'
+        //calendar table create
+        weekCalendarHtml += '<table style= "height: 70px;">'
 
-            weekCalendarHtml += '<tr>'//start of the line
+        weekCalendarHtml += '<tr>'//start of the line
 
-            for (let i = 0; i < 7; i++) {
-                weekCalendarHtml += '<td>' + (weekStartDay + i) + '</td>'
-            }
+        for (let i = 0; i < 7; i++) {
+            weekCalendarHtml += '<td>' + (weekStartDay + i) + '</td>'
+        }
 
-            weekCalendarHtml += '</tr>'//end of the line
-            weekCalendarHtml += '</table>'
+        weekCalendarHtml += '</tr>'//end of the line
+        weekCalendarHtml += '</table>'
 
-            document.querySelector('#calendar2').innerHTML = weekCalendarHtml
+        document.querySelector('#calendar2').innerHTML = weekCalendarHtml
 
-        </script>
-        <div class="space">
-        </div>
+    </script>
+    <div class="space">
+    </div>
 
-    </body>
+</body>
 
-    </html>
+</html>
