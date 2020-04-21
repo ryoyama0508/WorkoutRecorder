@@ -8,11 +8,12 @@ func main() {
 	router := gin.Default()
 	router.Static("/assets", "./assets")
 
-	router.LoadHTMLGlob("client/main/home/*.html")
+	router.LoadHTMLGlob("client/main/*.html")
 
-	router.GET("/", func(ctx *gin.Context) {
-		ctx.HTML(200, "home.html", "")
-	})
+	router.GET("/home", func(ctx *gin.Context) { ctx.HTML(200, "home.html", "") })
+	router.GET("/record", func(ctx *gin.Context) { ctx.HTML(200, "record.html", "") })
+	router.GET("/archive", func(ctx *gin.Context) { ctx.HTML(200, "archive.html", "") })
+	router.GET("/analysis", func(ctx *gin.Context) { ctx.HTML(200, "analysis.html", "") })
 
 	router.Run()
 }
