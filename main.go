@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"github.com/gin-gonic/gin"
@@ -11,7 +11,7 @@ func main() {
 	router.LoadHTMLGlob("client/main/home/*.html")
 
 	router.GET("/", func(ctx *gin.Context) {
-		ctx.HTML(200, "login.html", gin.H{})
+		ctx.HTML(200, "home.html", "")
 	})
 
 	router.Run()
