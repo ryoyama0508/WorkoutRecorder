@@ -25,12 +25,14 @@
         <h1>Workout Recorder</h1>
         <h4>write down the record of your Today's amazing workout!</h4>
     </div>
+
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
     <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="spinner diagonal part-1"></div>
         <div class="spinner horizontal"></div>
         <div class="spinner diagonal part-2"></div>
     </label>
+
     <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
             <li>
@@ -67,7 +69,13 @@
 
     <div class="homeButton">
         <div class="control">
-            <input type="button" onclick="httpGetAsync('http://localhost:8080/record')" value="Go to Record page">
+            <input type="button" onclick="httpGetAsync('http://localhost:8080/record')" value="Go to Record page" style="width: 100%;
+            background-color : #613434;
+            border: none;
+            color: #fff;
+            padding: 15px;
+            border-radius:3px;
+            box-shadow : 0 0 10px rgba(0,0,0,.4);">
         </div>
     </div>
 

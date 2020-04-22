@@ -7,13 +7,12 @@
     <title>Workout Recorder</title>
     <title>Log in</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 
 <main>
     <div class="header">
         <h1>Workout Recorder</h1>
-        <h1>{{.data}}</h1>
         <h4>write down the record of your Today's amazing workout!</h4>
     </div>
 
@@ -32,8 +31,14 @@
             <input id="passcode" type="password" name="passcode">
         </div>
         <div class="control">
-            <button
-                onclick="window.location.href = 'file:///Users/ryo/WorkoutRecorder/main/home/home.html';">submit</button>
+            <input type="button" onclick="httpGetAsync('http://localhost:8080/home')" value="submit" style="width: 100%;
+                background-color : #613434;
+                border: none;
+                color: #fff;
+                padding: 15px;
+                border-radius:3px;
+                box-shadow : 0 0 10px rgba(0,0,0,.4);">
+            <script type="text/javascript" src="signup.js"></script>
         </div>
     </div>
 </main>

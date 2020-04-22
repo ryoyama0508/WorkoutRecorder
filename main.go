@@ -11,6 +11,7 @@ func main() {
 	router.LoadHTMLGlob("client/main/*.html")
 
 	//html page responces
+	router.GET("/signup", func(ctx *gin.Context) { ctx.HTML(200, "signup.html", "") })
 	router.GET("/login", func(ctx *gin.Context) { ctx.HTML(200, "login.html", "") })
 	router.GET("/home", func(ctx *gin.Context) { ctx.HTML(200, "home.html", "") })
 	router.GET("/record", func(ctx *gin.Context) { ctx.HTML(200, "record.html", "") })
