@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -21,7 +21,6 @@
 </head>
 
 <body>
-    <header></header>
     <div class="header">
         <h1>Workout Recorder</h1>
         <h4>write down the record of your Today's amazing workout!</h4>
@@ -68,8 +67,7 @@
 
     <div class="homeButton">
         <div class="control">
-            <button onclick="window.location.href = 'file:///Users/ryo/WorkoutRecorder/main/record/record.html';">Go
-                to Record page</button>
+            <input type="button" onclick="httpGetAsync('http://localhost:8080/record')" value="Go to Record page">
         </div>
     </div>
 
