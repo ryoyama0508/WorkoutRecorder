@@ -159,7 +159,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 /* home menu css */
 .space{
-  padding-top: 0px;
+  padding-top: 60px;
   background-color: rgb(255, 255, 255);
 }
 
@@ -238,11 +238,10 @@ p{
 }
 
 button{
-  width: 100%;
   background-color : #613434;
   border: none;
   color: #fff;
-  padding: 15px;
+  margin: 15px;
   border-radius:3px;
   box-shadow : 0 0 10px rgba(0,0,0,.4);
 }
