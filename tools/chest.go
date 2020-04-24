@@ -4,12 +4,13 @@ import (
 	"context"
 	"strconv"
 
+	"github.com/Masterminds/squirrel"
 	"github.com/pkg/errors"
 )
 
-func (r *repositoryImpl) GoalCreate(
+func ChestRecord(
 	ctx context.Context,
-	postID, what, howMuch, how, reflectionID string,
+	userID int, weight float32, rep, set int8,
 ) (string, error) {
 	postIDInInt, err := strconv.Atoi(postID)
 	if err != nil {

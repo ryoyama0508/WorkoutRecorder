@@ -688,16 +688,42 @@
     <div class="container">
         <div class="row">
             <div class="col-sm 6">
-                <div class="control">
-                    <button onclick="location.href='http://localhost:8080/record'">just submit</button>
+                <div id="stayButton">
+                    <button onclick="recordPost()">just submit</button>
                 </div>
             </div>
+            <script>
+                function recordPost() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("button").innerHTML =
+                                this.responseText;
+                        }
+                    };
+                    xhttp.open("POST", 'http://localhost:8080/record', true);
+                    xhttp.send();
+                }
+            </script>
 
             <div class="col-sm 6">
-                <div class="control">
-                    <button onclick="location.href='http://localhost:8080/analysis'">submit and see analysis</button>
+                <div class="leaveButton">
+                    <button onclick="recordPost()">submit and see analysis</button>
                 </div>
             </div>
+            <script>
+                function recordPost() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("button").innerHTML =
+                                this.responseText;
+                        }
+                    };
+                    xhttp.open("POST", 'http://localhost:8080/analysis', true);
+                    xhttp.send();
+                }
+            </script>
 
         </div>
 
