@@ -2,7 +2,6 @@ package tools
 
 import (
 	"context"
-	"strconv"
 
 	"github.com/Masterminds/squirrel"
 	"github.com/pkg/errors"
@@ -11,35 +10,19 @@ import (
 func ChestRecord(
 	ctx context.Context,
 	userID int, weight float32, rep, set int8,
-) (string, error) {
-	postIDInInt, err := strconv.Atoi(postID)
-	if err != nil {
-		return "", err
+) *int {
+	if userID == 0 { //something weird
+		return nil
 	}
-
-	insert := squirrel.Insert("goals")
-	if reflectionID != "" {
-		reflectionIDInInt, err := strconv.Atoi(reflectionID)
-		if err != nil {
-			return "", err
-		}
-		insert = insert.Columns("post_id", "what", "how_much", "how", "reflection_id").
-			Values(postIDInInt, what, howMuch, how, reflectionIDInInt)
-	} else {
-		insert = insert.Columns("post_id", "what", "how_much", "how").
-			Values(postIDInInt, what, howMuch, how)
-	}
-	result, err := insert.RunWith(r.DB).
+	result := squirrel.Insert("bench_press").
+		Columns("user_id", "weight", "rep", "set").
+		Values(userID, weight, rep, set).
+		RunWith().
 		ExecContext(ctx)
-
-	if err != nil {
-		return "", errors.WithStack(err)
-	}
 
 	id, err := result.LastInsertId()
 	if err != nil {
-		return "", errors.WithStack(err)
+		return nil, errors.WithStack(err)
 	}
 
-	return strconv.Itoa(int(id)), nil
 }

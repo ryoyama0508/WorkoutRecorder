@@ -7,9 +7,8 @@ import (
 	"github.com/pkg/errors"
 )
 
-record
 
-func (u *commentUpdateUseCase) Execute(ctx context.Context, input CommentUpdateUseCaseInput) (Comment, error) {
+func Execute(ctx context.Context, input CommentUpdateUseCaseInput) (Comment, error) {
 	validate := validator.New()
 	if err := validate.Struct(input); err != nil {
 		return Comment{}, errors.WithStack(ErrValidation)

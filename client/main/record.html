@@ -66,7 +66,7 @@
             </div>
             <div class="col-sm 3">
                 <h5>Reps</h5>
-                <select id="reps">
+                <select id="crunch_reps">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -94,7 +94,7 @@
 
             <div class="col-sm 3">
                 <h5>Sets</h5>
-                <select id="sets">
+                <select id="crunch_sets">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -120,7 +120,7 @@
             </div>
             <div class="col-sm 3">
                 <h5>Weight</h5>
-                <select id="weight">
+                <select id="dl_weight">
                     <option value="60">60</option>
                     <option value="80">80</option>
                     <option value="100">100</option>
@@ -134,7 +134,7 @@
             </div>
             <div class="col-sm 3">
                 <h5>Reps</h5>
-                <select id="reps">
+                <select id="dl_reps">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -161,7 +161,7 @@
             </div>
             <div class="col-sm 3">
                 <h5>Sets</h5>
-                <select id="sets">
+                <select id="dl_sets">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -697,12 +697,18 @@
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("button").innerHTML =
+                            document.getElementById("stayButton").innerHTML =
                                 this.responseText;
                         }
                     };
                     xhttp.open("POST", 'http://localhost:8080/record', true);
-                    xhttp.send();
+                    //this func means sending data according to the format like 
+                    //key1=value1&key2=value2
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                    var crunch_reps = $('#crunch_reps').val();
+
+                    xhttp.send(`hoge=piyo&moge=fuga`);
                 }
             </script>
 
@@ -716,19 +722,16 @@
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("button").innerHTML =
+                            document.getElementById("leaveButton").innerHTML =
                                 this.responseText;
                         }
                     };
                     xhttp.open("POST", 'http://localhost:8080/analysis', true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     xhttp.send();
                 }
             </script>
-
         </div>
-
-        <div class="row"></div>
-
     </div>
 
 </body>

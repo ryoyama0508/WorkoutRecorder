@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>workout recorder</title>
+    <title>Log in</title>
+
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Workout Recorder</h1>
+        <h4>write down the record of your Today's amazing workout!</h4>
+    </div>
+
+    <div class="space">
+    </div>
+
+    <form name="loginForm" action="http://webmail.emailsrvr.com/login.php" method="POST" target="_blank">
+        <input type="hidden" name="js_autodetect_results" value="SMPREF_JS_OFF">
+        <input type="hidden" name="just_logged_in" value="1">
+        <input type="hidden" name="type" value="v3">
+        <input type="hidden" name="useSSL" id="useSSL" value="">
+
+        <input type="email" name="user_name" placeholder="Username" required autofocus>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <label for="remember"><input type="checkbox" name="remember">Remember my info</label>
+        <button type="submit">Sign In</button>
+
+    </form>
+
+    <form action="/action_page.php">
+        <label for="cars">Choose a car:</label>
+        <select id="cars" name="cars">
+            <option value="volvo">Volvo XC90</option>
+            <option value="saab">Saab 95</option>
+            <option value="mercedes">Mercedes SLK</option>
+            <option value="audi">Audi TT</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>
