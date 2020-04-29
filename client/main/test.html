@@ -7,7 +7,10 @@
     <title>workout recorder</title>
     <title>Log in</title>
 
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -19,31 +22,65 @@
     <div class="space">
     </div>
 
-    <form name="loginForm" action="http://webmail.emailsrvr.com/login.php" method="POST" target="_blank">
-        <input type="hidden" name="js_autodetect_results" value="SMPREF_JS_OFF">
-        <input type="hidden" name="just_logged_in" value="1">
-        <input type="hidden" name="type" value="v3">
-        <input type="hidden" name="useSSL" id="useSSL" value="">
+    <div class="container">
+        <h3>Abs</h3>
+        <div class="row">
+            <div class="col-sm 3">
+                <p>Crunch</p>
+            </div>
+            <div class="col-sm 3">
+            </div>
+            <div class="col-sm 3">
+                <h5>Reps</h5>
+                <select id="crunch_reps">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+                <label for="reps">reps</label>
+            </div>
 
-        <input type="email" name="user_name" placeholder="Username" required autofocus>
-        <input type="password" name="password" placeholder="Password" required>
+            <div class="col-sm 3">
+                <h5>Sets</h5>
+                <select id="crunch_sets">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="sets">sets</label>
+            </div>
+        </div>
+    </div>
 
-        <label for="remember"><input type="checkbox" name="remember">Remember my info</label>
-        <button type="submit">Sign In</button>
+    <button type="button" onclick="test('crunch_reps','crunch_sets')">Try it</button>
 
-    </form>
-
-    <form action="/action_page.php">
-        <label for="cars">Choose a car:</label>
-        <select id="cars" name="cars">
-            <option value="volvo">Volvo XC90</option>
-            <option value="saab">Saab 95</option>
-            <option value="mercedes">Mercedes SLK</option>
-            <option value="audi">Audi TT</option>
-        </select>
-        <input type="submit" value="Submit">
-    </form>
-
+    <script src="test.js"></script>
 </body>
 
 </html>

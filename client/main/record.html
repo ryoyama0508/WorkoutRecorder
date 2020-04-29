@@ -704,11 +704,18 @@
                     xhttp.open("POST", 'http://localhost:8080/record', true);
                     //this func means sending data according to the format like 
                     //key1=value1&key2=value2
-                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+
+                    document.getElementById("crunch_reps");
 
                     var crunch_reps = $('#crunch_reps').val();
+                    var crunch_sets = $('#crunch_sets').val();
 
-                    xhttp.send(`hoge=piyo&moge=fuga`);
+                    /* var json = {
+                        "cruch_reps": ,
+                        "cruch_sets": 
+                    } */
+                    xhttp.send(JSON.stringify(json));
                 }
             </script>
 
