@@ -1,31 +1,60 @@
-function test(arg1, arg2) {
-    var val1 = document.getElementById(arg1);
-    var val2 = document.getElementById(arg2);
-    console.log(val1.value, val2.value)
-}
-
-function testRecord(
+function postRecord(
+    url,
     cr_reps, cr_sets,
+    dl_weight, dl_reps, dl_sets,
+    chup_reps, chup_sets,
+    dc_weight, dc_reps, dc_sets,
+    bp_weight, bp_reps, bp_sets,
+    ht_weight, ht_reps, ht_sets,
+    sq_weight, sq_reps, sq_sets,
+    shpre_weight, shpre_reps, shpre_sets,
+    cablepre_weight, cablepre_reps, cablepre_sets,
 ) {
-    var data = []
+    data = []
+
     getAndInsertData(data, "", cr_reps, cr_sets, "crunch")
-    /* let reps = document.getElementById(cr_reps);
-    let sets = document.getElementById(cr_sets);
 
-    checkUnfilled("", reps.value, sets.value)
+    getAndInsertData(data, dl_weight, dl_reps, dl_sets, "dead lift")
 
-    var isFilled = nothingOrFilled("", reps.value, sets.value)
+    getAndInsertData(data, "", chup_reps, chup_sets, "chin up")
 
-    if (isFilled == true) {
-        var datum = {
-            exercise: "crunch",
-            reps: reps.value,
-            sets: sets.value
+    getAndInsertData(data, dc_weight, dc_reps, dc_sets, "dumbell curl")
+
+    getAndInsertData(data, bp_weight, bp_reps, bp_sets, "bench press")
+
+    getAndInsertData(data, ht_weight, ht_reps, ht_sets, "hip thrust")
+
+    getAndInsertData(data, sq_weight, sq_reps, sq_sets, "squat")
+
+    getAndInsertData(data, shpre_weight, shpre_reps, shpre_sets, "shoulder press")
+
+    getAndInsertData(data, cablepre_weight, cablepre_reps, cablepre_sets, "cable press down")
+
+
+    // Creating a XHR object 
+    let xhr = new XMLHttpRequest();
+
+    // open a connection 
+    xhr.open("POST", url, true);
+
+    // Set the request header i.e. which type of content you are sending 
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Create a state change callback 
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            // Print received data from server 
+            result.innerHTML = this.responseText;
+
         }
-        data.push(datum);
-    } */
+    };
 
-    console.log(data)
+    // Converting JSON data to string 
+    var json = JSON.stringify(data);
+
+    // Sending data with the request 
+    xhr.send(json);
 }
 
 function checkUnfilled(weight, sets, reps) {
@@ -100,12 +129,11 @@ function insertData(
         }
         data.push(datum);
     }
-    return data
 }
 
-function getAndInsertData(data, argweight, argsets, argreps, exercise) {
-    let sets = document.getElementById(argsets);
+function getAndInsertData(data, argweight, argreps, argsets, exercise) {
     let reps = document.getElementById(argreps);
+    let sets = document.getElementById(argsets);
 
     if (argweight != "") {
         let weight = document.getElementById(argweight);
