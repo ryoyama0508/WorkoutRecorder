@@ -1,23 +1,15 @@
-function postRequestStay(url) {
-
-    var xmlHttp = new XMLHttpRequest();//connection
-
-    xmlHttp.onreadystatechange = () => {//func that check if the server over there is ready or not
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            //onreadystatechangeで「読み込み途中⁠」⁠，および「読み込み完了⁠」⁠・「⁠失敗」時の処理を行います。
-            //まず，読み込みの状態を管理するのはreadyStateプロパティです。readyStateが4の時，読み込みの完了を示します。
-
-            //read the text right here
-            document.getElementById("demo").innerHTML = xhttp.responseText;
-        };
-    };
-
-    xmlHttp.open("GET", url, true); // true for asynchronous
-
-    xmlHttp.send(null);
-}
-
-function sendJSON() {
+function postRecord(
+    url,
+    crunch_reps, crunch_sets,
+    dl_weight, dl_reps, dl_sets,
+    cu_weight, cu_reps, cu_sets,
+    dc_weight, dc_reps, dc_sets,
+    bp_weight, bp_reps, bp_sets,
+    ht_weight, ht_reps, ht_sets,
+    sq_weight, sq_reps, sq_sets,
+    sp_weight, sp_reps, sp_sets,
+    cp_weight, cp_reps, cp_sets,
+) {
 
     let result = document.querySelector('.result');
     let name = document.querySelector('#name');
@@ -25,7 +17,6 @@ function sendJSON() {
 
     // Creating a XHR object 
     let xhr = new XMLHttpRequest();
-    let url = "submit.php";
 
     // open a connection 
     xhr.open("POST", url, true);
