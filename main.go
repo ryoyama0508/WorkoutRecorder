@@ -20,7 +20,12 @@ func main() {
 	router.GET("/archive", func(ctx *gin.Context) { ctx.HTML(200, "archive.html", "") })
 	router.GET("/analysis", func(ctx *gin.Context) { ctx.HTML(200, "analysis.html", "") })
 
-	router.POST("/record/post", handler.recordHandler(ctx))
+	router.POST("/record/post", func(ctx *gin.Context) {
+		text := ctx.PostForm("text")
+		status := ctx.PostForm("status")
+		dbInsert(text, status)
+		ctx.Redirect(302, "/")
+	})
 
 	router.Run()
 }
