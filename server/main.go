@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"github.com/gin-gonic/gin"
@@ -20,12 +20,7 @@ func main() {
 	router.GET("/archive", func(ctx *gin.Context) { ctx.HTML(200, "archive.html", "") })
 	router.GET("/analysis", func(ctx *gin.Context) { ctx.HTML(200, "analysis.html", "") })
 
-	router.POST("/record/post", func(ctx *gin.Context) {
-		text := ctx.PostForm("text")
-		status := ctx.PostForm("status")
-		dbInsert(text, status)
-		ctx.Redirect(302, "/")
-	})
+	router.POST("/record/post", handleRecord())
 
 	router.Run()
 }
