@@ -1,26 +1,40 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default()
-	router.Static("/assets", "./assets")
+	engine := gin.Default()
+	engine.Static("/assets", "./assets")
 
-	router.LoadHTMLGlob("client/main/*.html")
+	engine.LoadHTMLGlob("client/main/*.html")
 
 	//html page responces
-	router.GET("/signup", func(ctx *gin.Context) { ctx.HTML(200, "signup.html", "") })
-	router.GET("/login", func(ctx *gin.Context) { ctx.HTML(200, "login.html", "") })
-	router.GET("/home", func(ctx *gin.Context) { ctx.HTML(200, "home.html", "") })
+	engine.GET("/signup", func(ctx *gin.Context) { //what is that
+		ctx.HTML(http.StatusOK, "signup.html", gin.H{})
+	})
+	engine.GET("/login", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "login.html", gin.H{})
+	})
+	engine.GET("/home", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "home.html", gin.H{})
+	})
 
 	//record post and page change at the same time
-	router.GET("/record", func(ctx *gin.Context) { ctx.HTML(200, "record.html", "") })
-	router.GET("/archive", func(ctx *gin.Context) { ctx.HTML(200, "archive.html", "") })
-	router.GET("/analysis", func(ctx *gin.Context) { ctx.HTML(200, "analysis.html", "") })
+	engine.GET("/record", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "record.html", gin.H{})
+	})
+	engine.GET("/archive", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "achieve.html", gin.H{})
+	})
+	engine.GET("/analysis", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "analysis.html", gin.H{})
+	})
 
-	router.POST("/record/post", handleRecord())
+	engine.POST("/record/post", handleRecord())
 
-	router.Run()
+	engine.Run()
 }
