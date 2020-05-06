@@ -1,6 +1,11 @@
 package usecases
 
-import "context"
+import (
+	"context"
+
+	"github.com/pkg/errors"
+	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
+)
 
 //Crunch  is structure for exercise
 type Crunch struct {
@@ -10,7 +15,7 @@ type Crunch struct {
 
 //DeadLift  is structure for exercise
 type DeadLift struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
@@ -23,59 +28,91 @@ type ChinUp struct {
 
 //Dumbellcurl is structure for exercise
 type Dumbellcurl struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
 
 //BenchPress is structure for exercise
 type BenchPress struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
 
 //HipThrust is structure for exercise
 type HipThrust struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
 
 //Squat is structure for exercise
 type Squat struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
 
 //ShoulderPress is structure for exercise
 type ShoulderPress struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
 
 //CablePressDown is structure for exercise
 type CablePressDown struct {
-	weight int16
+	weight float32
 	reps   int8
 	sets   int8
 }
 
-//Exercise is sturcture for input of storeAndGetData
-type Exercise struct {
-	crunch         Crunch
-	deadLift       DeadLift
-	chinUp         ChinUp
-	dumbellCurl    Dumbellcurl
-	benchPress     BenchPress
-	hipThrust      HipThrust
-	squat          Squat
-	shoulderPress  ShoulderPress
-	cablePressDown CablePressDown
+//ExerciseRecord is sturcture for input of storeAndGetData
+type ExerciseRecord struct {
+	userID         int
+	crunch         *Crunch
+	deadLift       *DeadLift
+	chinUp         *ChinUp
+	dumbellCurl    *Dumbellcurl
+	benchPress     *BenchPress
+	hipThrust      *HipThrust
+	squat          *Squat
+	shoulderPress  *ShoulderPress
+	cablePressDown *CablePressDown
 }
 
-func StoreAndGetData(ctx context.Context, input Exercise) {
+//IDs are str for outputting record DB ids which are insarted
+type IDs struct {
+	crunchID         *int
+	deadLiftID       *int
+	chinUpID         *int
+	dumbellCurlID    *int
+	benchPressID     *int
+	hipThrustID      *int
+	squatID          *int
+	shoulderPressID  *int
+	cablePressDownID *int
+}
 
+//StoreAndGetData ...
+func StoreAndGetData(ctx context.Context, input ExerciseRecord) (IDs, error) {
+	var bpID *int
+	var err error
+	if input.benchPress != nil {
+		bpID, err = tools.ChestRecord(
+			ctx,
+			input.userID,
+			input.benchPress.weight,
+			input.benchPress.reps,
+			input.benchPress.sets,
+		)
+		if err != nil {
+			return IDs{}, errors.WithStack(err)
+		}
+	}
+
+	return IDs{
+		benchPressID: bpID,
+	}, nil
 }

@@ -8,7 +8,7 @@ import (
 
 func handleRecord() func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
-		var input usecases.Exercise
+		var input usecases.ExerciseRecord
 
 		if err := decodeJSONnInBody(ctx.Request, &input); err != nil {
 			errors.WithStack(err)

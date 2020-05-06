@@ -10,19 +10,26 @@ import (
 func ChestRecord(
 	ctx context.Context,
 	userID int, weight float32, rep, set int8,
-) *int {
+) (*int, error) {
 	if userID == 0 { //something weird
-		return nil
+		return nil, nil
 	}
-	result := squirrel.Insert("bench_press").
+	result, err := squirrel.Insert("bench_press").
 		Columns("user_id", "weight", "rep", "set").
 		Values(userID, weight, rep, set).
 		RunWith().
 		ExecContext(ctx)
 
-	id, err := result.LastInsertId()
 	if err != nil {
 		return nil, errors.WithStack(err)
 	}
 
+	id64, err := result.LastInsertId()
+	if err != nil {
+		return nil, errors.WithStack(err)
+	}
+
+	id := int(id64)
+
+	return &id, nil
 }
