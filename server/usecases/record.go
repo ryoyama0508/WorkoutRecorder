@@ -1,6 +1,6 @@
 package usecases
 
-import "net/http"
+import "context"
 
 //Crunch  is structure for exercise
 type Crunch struct {
@@ -76,6 +76,6 @@ type Exercise struct {
 	cablePressDown CablePressDown
 }
 
-func StoreAndGetData(ctx *http.Request, input Exercise) {
+func StoreAndGetData(ctx context.Context, input Exercise) {
 
 }

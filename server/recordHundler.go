@@ -15,6 +15,6 @@ func handleRecord() func(ctx *gin.Context) {
 			return
 		}
 
-		usecases.StoreAndGetData(ctx.Request.Context(), input)
+		usecases.StoreAndGetData(ctx.Request.Context(), input) //what is that?
 	}
 }
