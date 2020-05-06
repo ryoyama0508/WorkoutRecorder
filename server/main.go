@@ -1,9 +1,12 @@
 package server
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/pkg/errors"
 )
 
 func main() {
@@ -37,4 +40,19 @@ func main() {
 	engine.POST("/record/post", handleRecord())
 
 	engine.Run()
+
+}
+
+func decodeJSONnInBody(r *http.Request, d interface{}) error {
+	data, err := ioutil.ReadAll(r.Body)
+
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	if err := json.Unmarshal(data, d); err != nil {
+		return errors.WithStack(err)
+	}
+
+	return nil
 }
