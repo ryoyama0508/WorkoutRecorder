@@ -45,13 +45,15 @@ function postRecord(
         if (xhr.readyState === 4 && xhr.status === 200) {
 
             // Print received data from server 
-            result.innerHTML = this.responseText;
+            /* result.innerHTML = this.responseText; */
 
         }
     };
 
     // Converting JSON data to string 
     var json = JSON.stringify(data);
+
+    console.log(json)
 
     // Sending data with the request 
     xhr.send(json);

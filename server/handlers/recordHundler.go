@@ -20,16 +20,17 @@ func decodeJSONInBody(r *http.Request, d interface{}) error {
 	}
 
 	if err := json.Unmarshal(data, d); err != nil {
+		println("unmarshal error")
 		return errors.WithStack(err)
 	}
 
 	return nil
 }
 
-//HandleRecords ...
+//HandleRecord ...
 func HandleRecord(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
-		var input usecases.ExerciseRecord
+		var input usecases.ExerciseRecord //need userid
 
 		if err := decodeJSONInBody(ctx.Request, &input); err != nil {
 			errors.WithStack(err)
