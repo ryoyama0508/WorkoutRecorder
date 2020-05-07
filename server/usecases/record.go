@@ -2,6 +2,7 @@ package usecases
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/pkg/errors"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
@@ -96,11 +97,12 @@ type IDs struct {
 }
 
 //StoreAndGetData ...
-func StoreAndGetData(ctx context.Context, input ExerciseRecord) (IDs, error) {
+func StoreAndGetData(ctx context.Context, db *sql.DB, input ExerciseRecord) (IDs, error) {
 	var bpID *int
 	var err error
 	if input.benchPress != nil {
 		bpID, err = tools.ChestRecord(
+			db,
 			ctx,
 			input.userID,
 			input.benchPress.weight,

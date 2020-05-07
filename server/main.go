@@ -1,6 +1,7 @@
 package server
 
 import (
+	"database/sql"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -10,6 +11,11 @@ import (
 )
 
 func main() {
+	databaseName := "root:@tcp(127.0.0.1:3306)/w_recorder"
+
+	var db *sql.DB
+	db = DBinit(databaseName)
+
 	engine := gin.Default()
 	engine.Static("/assets", "./assets")
 
@@ -37,13 +43,13 @@ func main() {
 		ctx.HTML(http.StatusOK, "analysis.html", gin.H{})
 	})
 
-	engine.POST("/record/post", handleRecord())
+	engine.POST("/record/post", handleRecord(db))
 
 	engine.Run()
 
 }
 
-func decodeJSONnInBody(r *http.Request, d interface{}) error {
+func decodeJSONInBody(r *http.Request, d interface{}) error {
 	data, err := ioutil.ReadAll(r.Body)
 
 	if err != nil {

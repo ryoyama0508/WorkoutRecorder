@@ -2,12 +2,14 @@ package tools
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/Masterminds/squirrel"
 	"github.com/pkg/errors"
 )
 
 func ChestRecord(
+	db *sql.DB,
 	ctx context.Context,
 	userID int, weight float32, rep, set int8,
 ) (*int, error) {
@@ -17,7 +19,7 @@ func ChestRecord(
 	result, err := squirrel.Insert("bench_press").
 		Columns("user_id", "weight", "rep", "set").
 		Values(userID, weight, rep, set).
-		RunWith().
+		RunWith(db).
 		ExecContext(ctx)
 
 	if err != nil {
