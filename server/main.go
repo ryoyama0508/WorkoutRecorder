@@ -19,7 +19,7 @@ func main() {
 
 	engine := gin.Default()
 
-	engine.Static("/assets/css", "./assets")
+	engine.Static("/assets", "./assets")
 
 	engine.LoadHTMLGlob("../client/main/*.html")
 
