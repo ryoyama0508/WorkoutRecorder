@@ -8,6 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+//ChestRecord is tool func for recording
 func ChestRecord(
 	db *sql.DB,
 	ctx context.Context,

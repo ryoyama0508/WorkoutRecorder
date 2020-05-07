@@ -2,6 +2,7 @@ package server
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
@@ -16,6 +17,7 @@ func handleRecord(db *sql.DB) func(ctx *gin.Context) {
 			errors.WithStack(err)
 			return
 		}
+		fmt.Println(&input)
 
 		_, err := usecases.StoreAndGetData(ctx.Request.Context(), db, input)
 		if err != nil {
