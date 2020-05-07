@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	//for mysql
+	_ "github.com/go-sql-driver/mysql"
 )
 
 //DBinit is used for initializing DB connection or other manipulation of database.

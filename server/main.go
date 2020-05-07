@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,7 @@ func main() {
 	var db *sql.DB
 	db = database.DBinit(databaseName)
 
+	fmt.Println("finish db")
 	engine := gin.Default()
 	engine.Static("/assets", "./assets")
 
@@ -32,7 +34,7 @@ func main() {
 	})
 
 	//record post and page change at the same time
-	engine.GET("/record", func(ctx *gin.Context) {
+	engine.GET("/record/see", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "record.html", gin.H{})
 	})
 	engine.GET("/archive", func(ctx *gin.Context) {
