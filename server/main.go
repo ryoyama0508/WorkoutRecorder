@@ -15,15 +15,16 @@ func main() {
 
 	var db *sql.DB
 	db = database.DBinit(databaseName)
-
 	fmt.Println("finish db")
-	engine := gin.Default()
-	engine.Static("/assets", "./assets")
 
-	engine.LoadHTMLGlob("client/main/*.html")
+	engine := gin.Default()
+
+	engine.Static("/assets/css", "./assets")
+
+	engine.LoadHTMLGlob("../client/main/*.html")
 
 	//html page responces
-	engine.GET("/signup", func(ctx *gin.Context) { //what is that
+	engine.GET("/signup", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "signup.html", gin.H{})
 	})
 	engine.GET("/login", func(ctx *gin.Context) {

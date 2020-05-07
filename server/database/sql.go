@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"net/http"
 
 	//for mysql
 	_ "github.com/go-sql-driver/mysql"
@@ -18,13 +17,6 @@ func DBinit(dbName string) *sql.DB {
 	}
 
 	fmt.Println("initialized database")
-
-	if err = db.Ping(); err != nil {
-		log.Panic(err)
-	}
-
-	http.ListenAndServe(":8080", nil)
-
 	defer db.Close()
 
 	return db
