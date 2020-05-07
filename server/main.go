@@ -2,19 +2,18 @@ package main
 
 import (
 	"database/sql"
-	"encoding/json"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/pkg/errors"
+	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/database"
+	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/handlers"
 )
 
 func main() {
 	databaseName := "root:@tcp(127.0.0.1:3306)/w_recorder"
 
 	var db *sql.DB
-	db = dbInit(databaseName)
+	db = database.DBinit(databaseName)
 
 	engine := gin.Default()
 	engine.Static("/assets", "./assets")
@@ -43,22 +42,8 @@ func main() {
 		ctx.HTML(http.StatusOK, "analysis.html", gin.H{})
 	})
 
-	engine.POST("/record/post", handleRecord(db))
+	engine.POST("/record/post", handlers.HandleRecord(db))
 
 	engine.Run()
 
-}
-
-func decodeJSONInBody(r *http.Request, d interface{}) error {
-	data, err := ioutil.ReadAll(r.Body)
-
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
-	if err := json.Unmarshal(data, d); err != nil {
-		return errors.WithStack(err)
-	}
-
-	return nil
 }

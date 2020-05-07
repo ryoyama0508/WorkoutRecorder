@@ -1,16 +1,14 @@
-package main
+package database
 
 import (
 	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 //DBinit is used for initializing DB connection or other manipulation of database.
-func dbInit(dbName string) *sql.DB {
+func DBinit(dbName string) *sql.DB {
 	db, err := sql.Open("mysql", dbName)
 	if err != nil {
 		log.Panic(err)
