@@ -14,7 +14,7 @@ func main() {
 	databaseName := "root:@tcp(127.0.0.1:3306)/w_recorder"
 
 	var db *sql.DB
-	db = DBinit(databaseName)
+	db = dbInit(databaseName)
 
 	engine := gin.Default()
 	engine.Static("/assets", "./assets")

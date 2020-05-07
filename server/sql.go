@@ -10,7 +10,7 @@ import (
 )
 
 //DBinit is used for initializing DB connection or other manipulation of database.
-func DBinit(dbName string) *sql.DB {
+func dbInit(dbName string) *sql.DB {
 	db, err := sql.Open("mysql", dbName)
 	if err != nil {
 		log.Panic(err)
