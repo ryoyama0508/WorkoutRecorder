@@ -18,7 +18,6 @@ func main() {
 	fmt.Println("finish db")
 
 	engine := gin.Default()
-
 	engine.Static("/assets", "./assets")
 
 	engine.LoadHTMLGlob("../client/main/*.html")
