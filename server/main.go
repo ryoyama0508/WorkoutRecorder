@@ -46,6 +46,6 @@ func main() {
 
 	engine.POST("/record/post", handlers.HandleRecord(db))
 
-	engine.Run()
+	engine.Run(":8080")
 
 }

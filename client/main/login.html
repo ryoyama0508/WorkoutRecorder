@@ -7,7 +7,7 @@
     <title>workout recorder</title>
     <title>Log in</title>
 
-    <link rel="stylesheet" href="../../server/assets/login.css">
+    <link rel="stylesheet" href="../assets/login.css">
 </head>
 
 <body>
@@ -44,25 +44,7 @@
             box-shadow : 0 0 10px rgba(0,0,0,.4);">
         </div>
         <script>
-            function recordPost() {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("stayButton").innerHTML =
-                            this.responseText;
-                    }
-                };
-                xhttp.open("POST", 'http://localhost:8080/home', true);
-                //this func means sending data according to the format like 
-                //key1=value1&key2=value2
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-                var userName = $('#userName').val();
-                var mailAdress = $('#mymail').val();
-                var passcode = $('#passcode').val();
-
-                xhttp.send(`mailAdress=` + userName + `mailAdress=` + mailAdress + `&passcode=` + passcode);
-            }
         </script>
     </div>
 </body>
