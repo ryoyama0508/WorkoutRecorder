@@ -35,7 +35,7 @@ func decodeJSONInBody(r *http.Request, d interface{}) error {
 //HandleRecord ...
 func HandleRecord(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
-		var input []HandleRecordInput //need userid
+		var input []HandleRecordInput
 
 		if err := decodeJSONInBody(ctx.Request, &input); err != nil {
 			errors.WithStack(err)

@@ -3,6 +3,7 @@ package usecases
 import (
 	"context"
 	"database/sql"
+	"fmt"
 
 	"github.com/pkg/errors"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
@@ -114,6 +115,9 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, weight, reps, sets string)
 	// 	}
 	// }
 
+	//本来は線種目いっぺんによびだして記録する
+	//goroutine???
+
 	bpID, err = tools.ChestRecord(
 		ctx,
 		db,
@@ -125,6 +129,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, weight, reps, sets string)
 		return IDs{}, errors.WithStack(err)
 	}
 
+	fmt.Println(bpID)
 	return IDs{
 		benchPressID: bpID,
 	}, nil
