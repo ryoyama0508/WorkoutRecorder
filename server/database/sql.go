@@ -14,10 +14,10 @@ func DBinit(dbName string) *sql.DB {
 	if err != nil {
 		fmt.Println(err)
 	}
+	defer db.Close()
 
-	_, err = db.Query("INSERT INTO bench_press (user_id, weight, rep, set)VALUES (1, 50, 5, 5)")
+	_, err = db.Query("INSERT INTO users (`email`, `hashed_password`,`name`) VALUES(`test2`, `testpw`,`testname`)")
 	if err != nil {
-		fmt.Println("experient")
 		fmt.Println(err)
 	}
 
