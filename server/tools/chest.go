@@ -10,16 +10,16 @@ import (
 
 //ChestRecord is tool func for recording
 func ChestRecord(
-	db *sql.DB,
 	ctx context.Context,
-	userID int, weight float32, rep, set int8,
+	db *sql.DB,
+	/* userID int, */ weight, rep, set string,
 ) (*int, error) {
-	if userID == 0 { //something weird
+	/* if userID == 0 { //something weird
 		return nil, nil
-	}
+	} */
 	result, err := squirrel.Insert("bench_press").
-		Columns("user_id", "weight", "rep", "set").
-		Values(userID, weight, rep, set).
+		Columns("weight", "rep", "set").
+		Values(weight, rep, set).
 		RunWith(db).
 		ExecContext(ctx)
 

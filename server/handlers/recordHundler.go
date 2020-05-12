@@ -12,16 +12,21 @@ import (
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/usecases"
 )
 
+//HandleRecordInput is input for HandleRecord
+type HandleRecordInput struct {
+	Weight string `json:"weight"`
+	Reps   string `json:"reps"`
+	Sets   string `json:"sets"`
+}
+
 func decodeJSONInBody(r *http.Request, d interface{}) error {
 	data, err := ioutil.ReadAll(r.Body)
-
 	if err != nil {
 		return errors.WithStack(err)
 	}
 
 	if err := json.Unmarshal(data, d); err != nil {
-		println("unmarshal error")
-		return errors.WithStack(err)
+		fmt.Println(err)
 	}
 
 	return nil
@@ -30,15 +35,14 @@ func decodeJSONInBody(r *http.Request, d interface{}) error {
 //HandleRecord ...
 func HandleRecord(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
-		var input usecases.ExerciseRecord //need userid
+		var input []HandleRecordInput //need userid
 
 		if err := decodeJSONInBody(ctx.Request, &input); err != nil {
 			errors.WithStack(err)
 			return
 		}
-		fmt.Println(&input)
 
-		_, err := usecases.StoreAndGetData(ctx.Request.Context(), db, input)
+		_, err := usecases.StoreAndGetData(ctx.Request.Context(), db, input[0].Weight, input[0].Reps, input[0].Sets)
 		if err != nil {
 			errors.WithStack(err)
 		}

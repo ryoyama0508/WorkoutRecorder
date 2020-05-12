@@ -36,9 +36,9 @@ type Dumbellcurl struct {
 
 //BenchPress is structure for exercise
 type BenchPress struct {
-	weight float32
-	reps   int8
-	sets   int8
+	weight float32 `json:"weight"`
+	reps   int8    `json:"reps"`
+	sets   int8    `json:"sets"`
 }
 
 //HipThrust is structure for exercise
@@ -71,7 +71,7 @@ type CablePressDown struct {
 
 //ExerciseRecord is sturcture for input of storeAndGetData
 type ExerciseRecord struct {
-	userID         int
+	/* userID         int */
 	crunch         *Crunch
 	deadLift       *DeadLift
 	chinUp         *ChinUp
@@ -97,21 +97,32 @@ type IDs struct {
 }
 
 //StoreAndGetData ...
-func StoreAndGetData(ctx context.Context, db *sql.DB, input ExerciseRecord) (IDs, error) {
+func StoreAndGetData(ctx context.Context, db *sql.DB, weight, reps, sets string) (IDs, error) {
 	var bpID *int
 	var err error
-	if input.benchPress != nil {
-		bpID, err = tools.ChestRecord(
-			db,
-			ctx,
-			input.userID,
-			input.benchPress.weight,
-			input.benchPress.reps,
-			input.benchPress.sets,
-		)
-		if err != nil {
-			return IDs{}, errors.WithStack(err)
-		}
+	// if input.benchPress != nil {
+	// 	bpID, err = tools.ChestRecord(
+	// 		ctx,
+	// 		db,
+	// 		/* input.userID, */
+	// 		input.benchPress.weight,
+	// 		input.benchPress.reps,
+	// 		input.benchPress.sets,
+	// 	)
+	// 	if err != nil {
+	// 		return IDs{}, errors.WithStack(err)
+	// 	}
+	// }
+
+	bpID, err = tools.ChestRecord(
+		ctx,
+		db,
+		weight,
+		reps,
+		sets,
+	)
+	if err != nil {
+		return IDs{}, errors.WithStack(err)
 	}
 
 	return IDs{
