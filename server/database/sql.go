@@ -14,7 +14,6 @@ func DBinit(dbName string) *sql.DB {
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer db.Close()
 
 	fmt.Println("initialized database")
 

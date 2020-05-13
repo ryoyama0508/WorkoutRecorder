@@ -33,8 +33,8 @@ func ChestRecord(
 	if err != nil {
 		return nil, err
 	}
-	result, err := squirrel.Insert("bench_ppppress").
-		Columns("weight", "reps", "set").
+	result, err := squirrel.Insert("bench_press").
+		Columns("weight", "reps", "sets").
 		Values(float32(weight), reps, sets).
 		RunWith(db).
 		ExecContext(ctx)
