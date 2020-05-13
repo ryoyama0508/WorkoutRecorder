@@ -16,11 +16,6 @@ func DBinit(dbName string) *sql.DB {
 	}
 	defer db.Close()
 
-	_, err = db.Query("INSERT INTO users (`email`, `hashed_password`,`name`) VALUES(`test2`, `testpw`,`testname`)")
-	if err != nil {
-		fmt.Println(err)
-	}
-
 	fmt.Println("initialized database")
 
 	return db
