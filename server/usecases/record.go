@@ -212,7 +212,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			if err != nil {
 				return IDs{}, errors.WithStack(err)
 			}
-		} else if records[i].Name == "cable press down" {
+		} else {
 			cablePressDownID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
