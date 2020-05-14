@@ -3,11 +3,18 @@ package usecases
 import (
 	"context"
 	"database/sql"
-	"fmt"
 
 	"github.com/pkg/errors"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
 )
+
+//HandleRecordInput is input for HandleRecord
+type HandleRecordInput struct {
+	Name   string `json:"exercise"`
+	Weight string `json:"weight"`
+	Reps   string `json:"reps"`
+	Sets   string `json:"sets"`
+}
 
 //Crunch  is structure for exercise
 type Crunch struct {
@@ -30,16 +37,16 @@ type ChinUp struct {
 
 //Dumbellcurl is structure for exercise
 type Dumbellcurl struct {
-	weight float32
-	reps   int8
-	sets   int8
+	Weight string `json:"weight"`
+	Reps   string `json:"reps"`
+	Sets   string `json:"sets"`
 }
 
 //BenchPress is structure for exercise
 type BenchPress struct {
-	weight float32 `json:"weight"`
-	reps   int8    `json:"reps"`
-	sets   int8    `json:"sets"`
+	Weight string `json:"weight"`
+	Reps   string `json:"reps"`
+	Sets   string `json:"sets"`
 }
 
 //HipThrust is structure for exercise
@@ -98,39 +105,137 @@ type IDs struct {
 }
 
 //StoreAndGetData ...
-func StoreAndGetData(ctx context.Context, db *sql.DB, weight, reps, sets string) (IDs, error) {
-	var bpID *int
-	var err error
-	// if input.benchPress != nil {
-	// 	bpID, err = tools.ChestRecord(
-	// 		ctx,
-	// 		db,
-	// 		/* input.userID, */
-	// 		input.benchPress.weight,
-	// 		input.benchPress.reps,
-	// 		input.benchPress.sets,
-	// 	)
-	// 	if err != nil {
-	// 		return IDs{}, errors.WithStack(err)
-	// 	}
-	// }
-
-	//本来は線種目いっぺんによびだして記録する
+func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInput) (IDs, error) {
 	//goroutine???
-
-	bpID, err = tools.ChestRecord(
-		ctx,
-		db,
-		weight,
-		reps,
-		sets,
-	)
-	if err != nil {
-		return IDs{}, errors.WithStack(err)
+	var crunchID *int
+	var deadLiftID *int
+	var chinUpID *int
+	var dumbellCurlID *int
+	var benchPressID *int
+	var hipThrustID *int
+	var squatID *int
+	var shoulderPressID *int
+	var cablePressDownID *int
+	var err error
+	for i := 0; i < len(records); i++ {
+		if records[i].Name == "crunch" {
+			crunchID, err = tools.BodyWeightRecord(
+				ctx,
+				db,
+				"crunch",
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "dead lift" {
+			deadLiftID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"dead_lift",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "chin up" {
+			chinUpID, err = tools.BodyWeightRecord(
+				ctx,
+				db,
+				"chin_up",
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "dumbell curl" {
+			dumbellCurlID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"dumbell_curl",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "bench press" {
+			benchPressID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"bench_press",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "hip thrust" {
+			hipThrustID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"hip_thrust",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "squat" {
+			squatID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"squat",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "shoulder press" {
+			shoulderPressID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"shoulder_press",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		} else if records[i].Name == "cable press down" {
+			cablePressDownID, err = tools.FreeWeightRecord(
+				ctx,
+				db,
+				"cable_press_down",
+				records[i].Weight,
+				records[i].Reps,
+				records[i].Sets,
+			)
+			if err != nil {
+				return IDs{}, errors.WithStack(err)
+			}
+		}
 	}
 
-	fmt.Println(bpID)
 	return IDs{
-		benchPressID: bpID,
+		crunchID:         crunchID,
+		deadLiftID:       deadLiftID,
+		chinUpID:         chinUpID,
+		dumbellCurlID:    dumbellCurlID,
+		benchPressID:     benchPressID,
+		hipThrustID:      hipThrustID,
+		squatID:          squatID,
+		shoulderPressID:  shoulderPressID,
+		cablePressDownID: cablePressDownID,
 	}, nil
 }

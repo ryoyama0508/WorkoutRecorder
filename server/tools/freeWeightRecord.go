@@ -10,11 +10,11 @@ import (
 	"github.com/pkg/errors"
 )
 
-//ChestRecord is tool func for recording
-func ChestRecord(
+//FreeWeightRecord is tool func for recording
+func FreeWeightRecord(
 	ctx context.Context,
 	db *sql.DB,
-	/* userID int, */ weightStr, repStr, setStr string,
+	/* userID int, */ exercise, weightStr, repStr, setStr string,
 ) (*int, error) {
 	/* if userID == 0 {
 		return nil, nil
@@ -33,7 +33,7 @@ func ChestRecord(
 	if err != nil {
 		return nil, err
 	}
-	result, err := squirrel.Insert("bench_press").
+	result, err := squirrel.Insert(exercise).
 		Columns("weight", "reps", "sets").
 		Values(float32(weight), reps, sets).
 		RunWith(db).
