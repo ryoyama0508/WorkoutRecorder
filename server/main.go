@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/database"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/handlers"
@@ -18,6 +20,25 @@ func main() {
 	fmt.Println("finish db")
 
 	engine := gin.Default()
+
+	store := cookie.NewStore([]byte("secret"))
+	engine.Use(sessions.Sessions("mysession", store))
+
+	engine.POST("/login", func(c *gin.Context) {
+		// セッションの作成
+		session := sessions.Default(c)
+		session.Set("loginUser", c.PostForm("userId"))
+		session.Save()
+		c.String(http.StatusOK, "ログイン完了")
+	})
+	engine.GET("/logout", func(c *gin.Context) {
+		// セッションの破棄
+		session := sessions.Default(c)
+		session.Clear()
+		session.Save()
+		c.String(http.StatusOK, "ログアウトしました")
+	})
+
 	engine.Static("/assets", "./assets")
 
 	engine.LoadHTMLGlob("../client/main/*.html")

@@ -10,12 +10,10 @@ import (
 
 //DBinit is used for initializing DB connection or other manipulation of database.
 func DBinit(dbName string) *sql.DB {
-	db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/w_recorder")
+	db, err := sql.Open("mysql", dbName)
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	fmt.Println("initialized database")
 
 	return db
 }
