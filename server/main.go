@@ -24,19 +24,17 @@ func main() {
 	store := cookie.NewStore([]byte("secret"))
 	engine.Use(sessions.Sessions("mysession", store))
 
-	engine.POST("/login", func(c *gin.Context) {
-		// セッションの作成
-		session := sessions.Default(c)
-		session.Set("loginUser", c.PostForm("userId"))
+	engine.POST("/login", func(ctx *gin.Context) {
+		session := sessions.Default(ctx)
+		session.Set("loginUser", ctx.PostForm("userId"))
 		session.Save()
-		c.String(http.StatusOK, "ログイン完了")
+		ctx.String(http.StatusOK, "log in")
 	})
-	engine.GET("/logout", func(c *gin.Context) {
-		// セッションの破棄
-		session := sessions.Default(c)
+	engine.GET("/logout", func(ctx *gin.Context) {
+		session := sessions.Default(ctx)
 		session.Clear()
 		session.Save()
-		c.String(http.StatusOK, "ログアウトしました")
+		ctx.String(http.StatusOK, "log out")
 	})
 
 	engine.Static("/assets", "./assets")
