@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/database"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/handlers"
@@ -21,7 +19,7 @@ func main() {
 
 	engine := gin.Default()
 
-	store := cookie.NewStore([]byte("secret"))
+	/* store := cookie.NewStore([]byte("secret"))
 	engine.Use(sessions.Sessions("mysession", store))
 
 	engine.POST("/login", func(ctx *gin.Context) {
@@ -35,7 +33,7 @@ func main() {
 		session.Clear()
 		session.Save()
 		ctx.String(http.StatusOK, "log out")
-	})
+	}) */
 
 	engine.Static("/assets", "./assets")
 

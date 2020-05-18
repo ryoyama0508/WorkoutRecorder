@@ -11,7 +11,7 @@ import (
 //HandleSignUpInput is input for HandleRecord
 type HandleSignUpInput struct {
 	UserName string `json:"userName"`
-	Email    string `json:"email"`
+	Email    string `json:"emailAddr"`
 	PassWord string `json:"passWord"`
 }
 

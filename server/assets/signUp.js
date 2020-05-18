@@ -30,24 +30,22 @@ function postRecord(
 
 function checkUnfilled(username, email, password) {
     if (username != "") {
-        if (email != "") {
-            if (password == "") {
-                alert("fill out correctly")
-            }
-        } else if (password != "") {
-            if (email == 0) {
-                alert("fill out correctly")
-            }
+        if (email == "") {
+            alert("fill out correctly")
+        } else if (password == "") {
+            alert("fill out correctly")
         }
-    } else {
-        if (sets != 0) {
-            if (reps == 0) {
-                alert("fill out correctly")
-            }
-        } else if (reps != 0) {
-            if (sets == 0) {
-                alert("fill out correctly")
-            }
+    } else if (email != "") {
+        if (username == "") {
+            alert("fill out correctly")
+        } else if (password == "") {
+            alert("fill out correctly")
+        }
+    } else if (password != "") {
+        if (username == "") {
+            alert("fill out correctly")
+        } else if (email == "") {
+            alert("fill out correctly")
         }
     }
 }
@@ -57,12 +55,16 @@ function getAndInsertData(data, username, email, password) {
     let gotEmail = document.getElementById(email);
     let gotPassword = document.getElementById(password);
 
-    var userData = {
-        name: gotUsername,
-        mailaddr: gotEmail,
-        pw: gotPassword,
+    let isFilled = checkUnfilled(username, email, password);
+
+    if (isFilled == true) {
+        var userData = {
+            userName: gotUsername,
+            mailAddr: gotEmail,
+            passWord: gotPassword,
+        }
+        data.push(userData);
     }
-    data.push(userData);
 
     return data
 }
