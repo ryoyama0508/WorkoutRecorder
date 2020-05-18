@@ -46,7 +46,6 @@ func FreeWeightRecord(
 
 	id64, err := result.LastInsertId()
 	if err != nil {
-		fmt.Println("get id error")
 		return nil, errors.WithStack(err)
 	}
 

@@ -28,14 +28,11 @@ func UserDataRecord(
 		fmt.Println(err)
 		return err
 	}
-	fmt.Println("pass insert")
 
-	id, err := result.LastInsertId()
+	_, err = result.LastInsertId()
 	if err != nil {
 		return err
 	}
-
-	fmt.Println(id)
 
 	return nil
 }
