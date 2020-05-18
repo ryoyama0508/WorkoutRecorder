@@ -10,7 +10,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-//BodyWeight is tool func for recording
+//BodyWeightRecord is tool func for recording
 func BodyWeightRecord(
 	ctx context.Context,
 	db *sql.DB,

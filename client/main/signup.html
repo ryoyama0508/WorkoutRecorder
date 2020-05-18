@@ -23,6 +23,10 @@
         <h2>Sign-up</h2>
         <p>write down your email address and password</p>
         <div class="control">
+            <label for="username">user name</label>
+            <input id="username" type="username" name="username">
+        </div>
+        <div class="control">
             <label for="mymail">mail address</label>
             <input id="mymail" type="email" name="mymail">
         </div>
@@ -33,14 +37,18 @@
         </div>
 
         <div class="control">
-            <input type="button" onclick="httpGetAsync('http://localhost:8080/home')" value="submit" style="width: 100%;
+            <input type="button" onclick="signUp(
+                'http://localhost:8080/signup/post',
+                'username',
+                'email',
+                'passcodes')" value="submit" style="width: 100%;
                 background-color : #613434;
                 border: none;
                 color: #fff;
                 padding: 15px;
                 border-radius:3px;
                 box-shadow : 0 0 10px rgba(0,0,0,.4);">
-            <script type="text/javascript" src="signup.js"></script>
+            <script type="text/javascript" src="signUp.js"></script>
         </div>
     </div>
 </main>

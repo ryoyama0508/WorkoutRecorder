@@ -45,6 +45,8 @@ func main() {
 	engine.GET("/signup", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "signup.html", gin.H{})
 	})
+	engine.POST("/signup/post", handlers.HandleSignUp(db))
+
 	engine.GET("/login", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "login.html", gin.H{})
 	})
