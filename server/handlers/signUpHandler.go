@@ -11,14 +11,14 @@ import (
 //HandleSignUp ...
 func HandleSignUp(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
-		var input []usecases.HandleRecordInput
+		var input []usecases.HandleSignUpInput
 
 		if err := decodeJSONInBody(ctx.Request, &input); err != nil {
 			errors.WithStack(err)
 			return
 		}
 
-		_, err := usecases.StoreAndGetData(ctx.Request.Context(), db, input)
+		err := usecases.StoreDataSignUp(ctx.Request.Context(), db, input[0])
 		if err != nil {
 			errors.WithStack(err)
 		}

@@ -1,4 +1,4 @@
-function postRecord(
+function signUp(
     url,
     username,
     email,
@@ -17,12 +17,10 @@ function postRecord(
     // Set the request header i.e. which type of content you are sending 
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    //erase
-
     // Converting JSON data to string 
     var json = JSON.stringify(data);
 
-    console.log(json)
+    console.log(json);
 
     // Sending data with the request 
     xhr.send(json);
@@ -32,30 +30,37 @@ function checkUnfilled(username, email, password) {
     if (username != "") {
         if (email == "") {
             alert("fill out correctly")
+            return false
         } else if (password == "") {
             alert("fill out correctly")
+            return false
         }
     } else if (email != "") {
         if (username == "") {
             alert("fill out correctly")
+            return false
         } else if (password == "") {
             alert("fill out correctly")
+            return false
         }
     } else if (password != "") {
         if (username == "") {
             alert("fill out correctly")
+            return false
         } else if (email == "") {
             alert("fill out correctly")
+            return false
         }
     }
+    return true
 }
 
 function getAndInsertData(data, username, email, password) {
-    let gotUsername = document.getElementById(username);
-    let gotEmail = document.getElementById(email);
-    let gotPassword = document.getElementById(password);
+    let gotUsername = document.getElementById(username).value;
+    let gotEmail = document.getElementById(email).value;
+    let gotPassword = document.getElementById(password).value;
 
-    let isFilled = checkUnfilled(username, email, password);
+    var isFilled = checkUnfilled(gotUsername, gotEmail, gotPassword);
 
     if (isFilled == true) {
         var userData = {

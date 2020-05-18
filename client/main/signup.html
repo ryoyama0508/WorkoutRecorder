@@ -22,33 +22,42 @@
     <div class="content">
         <h2>Sign-up</h2>
         <p>write down your email address and password</p>
+        <label for="username">user name</label>
+        <input type="text" id="username" name="username">
+
+        <label for="mymail">mail address</label>
+        <input type="email" id="mymail" name="mymail">
+
+
+        <label for="passcode">password</label>
+        <input type="password" id="passcode" name="passcode">
+
         <div class="control">
-            <label for="username">user name</label>
-            <input id="username" type="username" name="username">
-        </div>
-        <div class="control">
-            <label for="mymail">mail address</label>
-            <input id="mymail" type="email" name="mymail">
+            <button onclick="clickBtn5(
+                'username')">submit</button>
+            <script>
+                function clickBtn5(username) {
+                    // 値を取得
+                    console.log(username)
+                    const t3 = document.getElementById(username).value;
+                    console.log(t3)
+                }
+            </script>
         </div>
 
         <div class="control">
-            <label for="passcode">password</label>
-            <input id="passcode" type="password" name="passcode">
-        </div>
-
-        <div class="control">
-            <input type="button" onclick="signUp(
+            <button onclick="signUp(
                 'http://localhost:8080/signup/post',
                 'username',
-                'email',
-                'passcodes')" value="submit" style="width: 100%;
+                'mymail',
+                'passcode')" style="width: 100%;
                 background-color : #613434;
                 border: none;
                 color: #fff;
                 padding: 15px;
                 border-radius:3px;
-                box-shadow : 0 0 10px rgba(0,0,0,.4);">
-            <script type="text/javascript" src="signUp.js"></script>
+            box-shadow : 0 0 10px rgba(0,0,0,.4);">submit</button>
+            <script type="text/javascript" src="../assets/signUp.js"></script>
         </div>
     </div>
 </main>
