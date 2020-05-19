@@ -10,10 +10,10 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-//HandleSignUp ...
-func HandleSignUp(db *sql.DB) func(ctx *gin.Context) {
+//HandleLogin ...
+func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
-		var input []usecases.HandleSignUpInput
+		var input []usecases.HandleLoginInput
 
 		if err := decodeJSONInBody(ctx.Request, &input); err != nil {
 			errors.WithStack(err)
@@ -31,7 +31,7 @@ func HandleSignUp(db *sql.DB) func(ctx *gin.Context) {
 
 		input[0].PassWord = string(pass)
 
-		err = usecases.StoreDataSignUp(ctx.Request.Context(), db, input[0])
+		err = usecases.UserLogin(ctx.Request.Context(), db, input[0])
 		if err != nil {
 			errors.WithStack(err)
 		}

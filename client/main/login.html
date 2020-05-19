@@ -35,7 +35,12 @@
             <input id="passcode" type="password" name="passcode">
         </div>
         <div class="control">
-            <input type="button" value="submit" onclick="recordPost()" style="width: 100%;
+            <input type="button" value="submit" onclick="signUpAndLogin(
+                'http://localhost:8080/login/enter',
+                'username',
+                'mymail',
+                'passcode'
+            )" style="width: 100%;
             background-color : #613434;
             border: none;
             color: #fff;

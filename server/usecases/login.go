@@ -9,17 +9,17 @@ import (
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
 )
 
-//HandleSignUpInput is input for HandleSignUp
-type HandleSignUpInput struct {
+//HandleLoginInput is input for HandleRecord
+type HandleLoginInput struct {
 	UserName string `json:"userName"`
 	Email    string `json:"mailAddr"`
 	PassWord string `json:"passWord"`
 }
 
-//StoreDataSignUp ...
-func StoreDataSignUp(ctx context.Context, db *sql.DB, data HandleSignUpInput) error {
+//UserLogin ...
+func UserLogin(ctx context.Context, db *sql.DB, data HandleLoginInput) error {
 	fmt.Println(data.UserName)
-	err := tools.UserDataRecord(
+	_, err := tools.UserDataCheck(
 		ctx,
 		db,
 		"users",

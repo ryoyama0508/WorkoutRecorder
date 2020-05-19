@@ -1,4 +1,4 @@
-function signUp(
+function signUpAndLogin(
     url,
     username,
     email,
