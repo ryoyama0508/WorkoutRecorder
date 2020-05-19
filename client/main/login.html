@@ -24,7 +24,7 @@
         <p>write down your account info</p>
         <div class="control">
             <label for="text">your user name</label>
-            <input id="userName" type="userName" name="userName">
+            <input id="username" type="userName" name="userName">
         </div>
         <div class="control">
             <label for="mymail">mail address</label>
@@ -35,7 +35,7 @@
             <input id="passcode" type="password" name="passcode">
         </div>
         <div class="control">
-            <input type="button" value="submit" onclick="signUpAndLogin(
+            <button onclick="login(
                 'http://localhost:8080/login/enter',
                 'username',
                 'mymail',
@@ -46,8 +46,9 @@
             color: #fff;
             padding: 15px;
             border-radius:3px;
-            box-shadow : 0 0 10px rgba(0,0,0,.4);">
+            box-shadow : 0 0 10px rgba(0,0,0,.4);">submit
         </div>
+        <script type="text/javascript" src="../assets/loginOrSignup.js"></script>
         <script>
 
         </script>

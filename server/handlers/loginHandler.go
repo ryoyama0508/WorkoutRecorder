@@ -19,7 +19,7 @@ func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 			errors.WithStack(err)
 			return
 		}
-
+		fmt.Println("here")
 		pass, err := bcrypt.GenerateFromPassword([]byte(input[0].PassWord), bcrypt.DefaultCost)
 		if err != nil {
 			fmt.Println(err)

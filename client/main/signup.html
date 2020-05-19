@@ -33,20 +33,7 @@
         <input type="password" id="passcode" name="passcode">
 
         <div class="control">
-            <button onclick="clickBtn5(
-                'username')">submit</button>
-            <script>
-                function clickBtn5(username) {
-                    // 値を取得
-                    console.log(username)
-                    const t3 = document.getElementById(username).value;
-                    console.log(t3)
-                }
-            </script>
-        </div>
-
-        <div class="control">
-            <button onclick="signUpAndLogin(
+            <button onclick="signup(
                 'http://localhost:8080/signup/post',
                 'username',
                 'mymail',
@@ -57,7 +44,7 @@
                 padding: 15px;
                 border-radius:3px;
             box-shadow : 0 0 10px rgba(0,0,0,.4);">submit</button>
-            <script type="text/javascript" src="../assets/signUp.js"></script>
+            <script type="text/javascript" src="../assets/loginOrSignup.js"></script>
         </div>
     </div>
 </main>

@@ -62,6 +62,7 @@ func UserDataCheck(
 		fmt.Println("No rows")
 		return false, err
 	}
+	fmt.Println("correspond")
 
 	return true, nil
 }
