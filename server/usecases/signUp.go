@@ -4,28 +4,46 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"net/url"
+	"strings"
 
 	"github.com/pkg/errors"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
+	"golang.org/x/crypto/bcrypt"
 )
 
-//HandleSignUpInput is input for HandleSignUp
-type HandleSignUpInput struct {
-	UserName string `json:"userName"`
-	Email    string `json:"mailAddr"`
-	PassWord string `json:"passWord"`
-}
-
 //StoreDataSignUp ...
-func StoreDataSignUp(ctx context.Context, db *sql.DB, data HandleSignUpInput) error {
-	fmt.Println(data.UserName)
-	err := tools.UserDataRecord(
+func StoreDataSignUp(ctx context.Context, db *sql.DB, keyValueData url.Values) error {
+	pw := keyValueData["passcode"]
+
+	password := strings.Join(pw, "")
+
+	hashedPW, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	if err != nil {
+		fmt.Println(err)
+		return errors.WithStack(err)
+	}
+
+	userName := strings.Join(keyValueData["username"], "")
+	if userName == "" {
+		fmt.Println("username couldn't find")
+	}
+	email := strings.Join(keyValueData["mymail"], "")
+	if email == "" {
+		fmt.Println("mymail couldn't find")
+	}
+	passWord := string(hashedPW)
+	if passWord == "" {
+		fmt.Println("password couldn't find")
+	}
+
+	err = tools.UserDataRecord(
 		ctx,
 		db,
 		"users",
-		data.UserName,
-		data.Email,
-		data.PassWord,
+		userName,
+		email,
+		passWord,
 	)
 	if err != nil {
 		return errors.WithStack(err)

@@ -17,7 +17,6 @@ func decodeJSONInBody(r *http.Request, d interface{}) error {
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	fmt.Println("read all")
 	if err := json.Unmarshal(data, d); err != nil {
 		fmt.Println("unmarshal")
 		fmt.Println(err)

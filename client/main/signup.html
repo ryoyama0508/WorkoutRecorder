@@ -22,29 +22,29 @@
     <div class="content">
         <h2>Sign-up</h2>
         <p>write down your email address and password</p>
-        <label for="username">user name</label>
-        <input type="text" id="username" name="username">
-
-        <label for="mymail">mail address</label>
-        <input type="email" id="mymail" name="mymail">
-
-
-        <label for="passcode">password</label>
-        <input type="password" id="passcode" name="passcode">
-
-        <div class="control">
-            <button onclick="signup(
-                'http://localhost:8080/signup/post',
-                'username',
-                'mymail',
-                'passcode')" style="width: 100%;
+        <form method="post" action='http://localhost:8080/signup/post'>
+            <p>
+                <label for="username">user name</label>
+                <input type="text" id="username" name="username">
+            </p>
+            <p>
+                <label for="mymail">mail address</label>
+                <input type="email" id="mymail" name="mymail">
+            </p>
+            <p>
+                <label for="passcode">password</label>
+                <input type="password" id="passcode" name="passcode">
+            </p>
+            <p>
+                <input type="submit" value="submit the form" style="width: 100%;
                 background-color : #613434;
                 border: none;
                 color: #fff;
                 padding: 15px;
                 border-radius:3px;
-            box-shadow : 0 0 10px rgba(0,0,0,.4);">submit</button>
-            <script type="text/javascript" src="../assets/loginOrSignup.js"></script>
-        </div>
+            box-shadow : 0 0 10px rgba(0,0,0,.4);">
+                <input type="reset" value="reset">
+            </p>
+        </form>
     </div>
 </main>

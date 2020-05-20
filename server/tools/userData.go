@@ -15,10 +15,6 @@ func UserDataRecord(
 	dbname,
 	userName, email, password string,
 ) error {
-	fmt.Println(dbname)
-	fmt.Println(userName)
-	fmt.Println(email)
-	fmt.Println(password)
 	result, err := squirrel.Insert(dbname).
 		Columns("email", "hashed_password", "name").
 		Values(email, password, userName).
@@ -37,17 +33,13 @@ func UserDataRecord(
 	return nil
 }
 
-//UserDataCheck is tool func for recording userdata
+//UserDataCheck is tool func for checking userdata
 func UserDataCheck(
 	ctx context.Context,
 	db *sql.DB,
 	dbname,
 	userName, email, password string,
 ) (bool, error) {
-	fmt.Println(dbname)
-	fmt.Println(userName)
-	fmt.Println(email)
-	fmt.Println(password)
 	_, err := squirrel.Select("name", "email", "hashed_password").
 		From("users").
 		Where(squirrel.Eq{"name": userName, "email": email, "hashed_password": password, "deleted_at": nil}).
