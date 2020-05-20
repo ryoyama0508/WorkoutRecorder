@@ -3,6 +3,7 @@ package handlers
 import (
 	"database/sql"
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
@@ -18,9 +19,12 @@ func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 
 		keyValueData := ctx.Request.Form
 
-		err := usecases.UserLogin(ctx.Request.Context(), db, keyValueData)
+		isCorrespond, err := usecases.UserLogin(ctx.Request.Context(), db, keyValueData)
 		if err != nil {
 			errors.WithStack(err)
+		}
+		if isCorrespond == true {
+			ctx.HTML(http.StatusOK, "home.html", gin.H{})
 		}
 	}
 }

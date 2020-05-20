@@ -20,8 +20,7 @@ func StoreDataSignUp(ctx context.Context, db *sql.DB, keyValueData url.Values) e
 
 	hashedPW, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		fmt.Println(err)
-		return errors.WithStack(err)
+		return err
 	}
 
 	userName := strings.Join(keyValueData["username"], "")

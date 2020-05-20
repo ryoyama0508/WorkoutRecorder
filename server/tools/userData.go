@@ -4,8 +4,10 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"log"
 
 	"github.com/Masterminds/squirrel"
+	"golang.org/x/crypto/bcrypt"
 )
 
 //UserDataRecord is tool func for recording userdata
@@ -40,21 +42,22 @@ func UserDataCheck(
 	dbname,
 	userName, email, password string,
 ) (bool, error) {
-	_, err := squirrel.Select("name", "email", "hashed_password").
+	fmt.Println(userName)
+	fmt.Println(email)
+	fmt.Println(password)
+	var pw string
+	if err := squirrel.Select("hashed_password").
 		From("users").
-		Where(squirrel.Eq{"name": userName, "email": email, "hashed_password": password, "deleted_at": nil}).
+		Where(squirrel.Eq{"name": userName, "email": email, "deleted_at": nil}).
 		RunWith(db).
-		ExecContext(ctx)
+		QueryRowContext(ctx).Scan(&pw); err != nil {
+		log.Fatal(err)
+	}
 
-	if err != nil && err != sql.ErrNoRows {
-		fmt.Println(err)
-		return false, err
+	err := bcrypt.CompareHashAndPassword([]byte(pw), []byte(password))
+	if err != nil {
+		return false, nil
 	}
-	if err == sql.ErrNoRows {
-		fmt.Println("No rows")
-		return false, err
-	}
-	fmt.Println("correspond")
 
 	return true, nil
 }

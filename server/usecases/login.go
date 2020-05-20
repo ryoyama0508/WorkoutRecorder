@@ -9,7 +9,6 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
-	"golang.org/x/crypto/bcrypt"
 )
 
 //HandleLoginInput is input for HandleRecord
@@ -20,16 +19,10 @@ type HandleLoginInput struct {
 }
 
 //UserLogin ...
-func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) error {
+func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) (bool, error) {
 	pw := keyValueData["passcode"]
 
 	password := strings.Join(pw, "")
-
-	hashedPW, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-	if err != nil {
-		fmt.Println(err)
-		return errors.WithStack(err)
-	}
 
 	userName := strings.Join(keyValueData["username"], "")
 	if userName == "" {
@@ -39,11 +32,12 @@ func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) error {
 	if email == "" {
 		fmt.Println("mymail couldn't find")
 	}
-	passWord := string(hashedPW)
+	passWord := string(password)
 	if passWord == "" {
 		fmt.Println("password couldn't find")
 	}
-	_, err = tools.UserDataCheck(
+
+	isCorrespond, err := tools.UserDataCheck(
 		ctx,
 		db,
 		"users",
@@ -52,8 +46,8 @@ func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) error {
 		passWord,
 	)
 	if err != nil {
-		return errors.WithStack(err)
+		return false, errors.WithStack(err)
 	}
 
-	return nil
+	return isCorrespond, nil
 }
