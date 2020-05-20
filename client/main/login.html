@@ -22,36 +22,30 @@
     <div class="content">
         <h2>Log in</h2>
         <p>write down your account info</p>
-        <div class="control">
-            <label for="text">your user name</label>
-            <input id="username" type="userName" name="userName">
-        </div>
-        <div class="control">
-            <label for="mymail">mail address</label>
-            <input id="mymail" type="email" name="mymail">
-        </div>
-        <div class="control">
-            <label for="passcode">password</label>
-            <input id="passcode" type="password" name="passcode">
-        </div>
-        <div class="control">
-            <button onclick="login(
-                'http://localhost:8080/login/enter',
-                'username',
-                'mymail',
-                'passcode'
-            )" style="width: 100%;
-            background-color : #613434;
-            border: none;
-            color: #fff;
-            padding: 15px;
-            border-radius:3px;
-            box-shadow : 0 0 10px rgba(0,0,0,.4);">submit
-        </div>
-        <script type="text/javascript" src="../assets/loginOrSignup.js"></script>
-        <script>
-
-        </script>
+        <form method="post" action='http://localhost:8080/login/enter'>
+            <p>
+                <label for="username">user name</label>
+                <input type="text" id="username" name="username">
+            </p>
+            <p>
+                <label for="mymail">mail address</label>
+                <input type="email" id="mymail" name="mymail">
+            </p>
+            <p>
+                <label for="passcode">password</label>
+                <input type="password" id="passcode" name="passcode">
+            </p>
+            <p>
+                <input type="submit" value="submit the form" style="width: 100%;
+                background-color : #613434;
+                border: none;
+                color: #fff;
+                padding: 15px;
+                border-radius:3px;
+            box-shadow : 0 0 10px rgba(0,0,0,.4);">
+                <input type="reset" value="reset">
+            </p>
+        </form>
     </div>
 </body>
 

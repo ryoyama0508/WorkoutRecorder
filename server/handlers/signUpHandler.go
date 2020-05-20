@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"database/sql"
-	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
@@ -13,8 +12,6 @@ import (
 func HandleSignUp(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
 		ctx.Request.ParseForm()
-
-		fmt.Println(ctx.Request.Form)
 
 		keyValueData := ctx.Request.Form
 
