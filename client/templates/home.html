@@ -23,7 +23,8 @@
 <body>
     <div class="header">
         <h1>Workout Recorder</h1>
-        <h4>write down the record of your Today's amazing workout!</h4>
+        <h1>Welcome {{ .username }}</h1>
+        <h4>write down the record of your Today's amazing workout.</h4>
     </div>
 
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -69,7 +70,8 @@
 
     <div class="homeButton">
         <div class="control">
-            <input type="button" onclick="location.href='http://localhost:8080/record'" value="Go to Record page" style="width: 100%;
+            <input type="button" onclick="location.href='http://localhost:8080/record/see'" value="Go to Record page"
+                style="width: 100%;
             background-color : #613434;
             border: none;
             color: #fff;

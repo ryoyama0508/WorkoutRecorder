@@ -41,20 +41,21 @@ func UserDataCheck(
 	db *sql.DB,
 	dbname,
 	userName, email, password string,
-) (bool, error) {
+) (bool, uint, error) {
+	var userID uint
 	var pw string
 	if err := squirrel.Select("hashed_password").
 		From("users").
 		Where(squirrel.Eq{"name": userName, "email": email, "deleted_at": nil}).
 		RunWith(db).
-		QueryRowContext(ctx).Scan(&pw); err != nil {
+		QueryRowContext(ctx).Scan(&userID, &pw); err != nil {
 		log.Fatal(err)
 	}
 
 	err := bcrypt.CompareHashAndPassword([]byte(pw), []byte(password))
 	if err != nil {
-		return false, nil
+		return false, 0, nil
 	}
 
-	return true, nil
+	return true, userID, nil
 }

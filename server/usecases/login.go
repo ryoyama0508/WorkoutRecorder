@@ -19,7 +19,7 @@ type HandleLoginInput struct {
 }
 
 //UserLogin ...
-func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) (string, bool, error) {
+func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) (string, bool, uint, error) {
 	pw := keyValueData["passcode"]
 
 	password := strings.Join(pw, "")
@@ -37,7 +37,7 @@ func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) (string
 		fmt.Println("password couldn't find")
 	}
 
-	isCorrespond, err := tools.UserDataCheck(
+	isCorrespond, userID, err := tools.UserDataCheck(
 		ctx,
 		db,
 		"users",
@@ -46,8 +46,8 @@ func UserLogin(ctx context.Context, db *sql.DB, keyValueData url.Values) (string
 		passWord,
 	)
 	if err != nil {
-		return "", false, errors.WithStack(err)
+		return "", false, 0, errors.WithStack(err)
 	}
 
-	return userName, isCorrespond, nil
+	return userName, isCorrespond, userID, nil
 }

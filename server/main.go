@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/database"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/handlers"
@@ -19,21 +21,21 @@ func main() {
 
 	engine := gin.Default()
 
-	/* store := cookie.NewStore([]byte("secret"))
+	store := cookie.NewStore([]byte("secret"))
 	engine.Use(sessions.Sessions("mysession", store))
 
 	engine.POST("/login", func(ctx *gin.Context) {
 		session := sessions.Default(ctx)
-		session.Set("loginUser", ctx.PostForm("userId"))
+		cookie := &http.Cookie{
+			Name:  "hoge",
+			Value: "bar",
+		}
+		http.SetCookie(ctx.Writer, cookie)
+
+		session.Set("loginUser", ctx.PostForm("userId")) //search at header or body when it exists
 		session.Save()
 		ctx.String(http.StatusOK, "log in")
 	})
-	engine.GET("/logout", func(ctx *gin.Context) {
-		session := sessions.Default(ctx)
-		session.Clear()
-		session.Save()
-		ctx.String(http.StatusOK, "log out")
-	}) */
 
 	engine.Static("/assets", "./assets")
 
@@ -50,6 +52,13 @@ func main() {
 	})
 	engine.POST("/login/enter", handlers.HandleLogin(db))
 
+	engine.GET("/logout", func(ctx *gin.Context) {
+		session := sessions.Default(ctx)
+		session.Clear()
+		session.Save()
+		ctx.String(http.StatusOK, "log out")
+	})
+
 	engine.GET("/home", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "home.html", gin.H{})
 	})
@@ -61,9 +70,7 @@ func main() {
 	engine.GET("/archive", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "archive.html", gin.H{})
 	})
-	engine.GET("/analysis", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "analysis.html", gin.H{})
-	})
+	engine.GET("/analysis", handlers.HandleAnalysis(db))
 
 	engine.POST("/record/post", handlers.HandleRecord(db))
 

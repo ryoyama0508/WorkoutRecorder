@@ -3,7 +3,7 @@ package handlers
 import (
 	"database/sql"
 	"log"
-	"net/http"
+	"text/template"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -11,8 +11,8 @@ import (
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/usecases"
 )
 
-//HandleLogin ...
-func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
+//HandleAnalysis ...
+func HandleAnalysis(db *sql.DB) func(ctx *gin.Context) {
 	return func(ctx *gin.Context) {
 		ctx.Request.ParseForm()
 
@@ -34,14 +34,8 @@ func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 			session.Save()
 		}
 
-		if isCorrespond == true {
-			ctx.HTML(http.StatusOK, "home.html", gin.H{
-				"username": userName,
-			})
-		} else {
-			ctx.HTML(http.StatusOK, "login.html", gin.H{
-				"message": "your input data is incorrect",
-			})
-		}
+		tmpl := template.Must(template.ParseFiles("analysis.html"))
+		tmpl.Execute(ctx.Writer, cookie)
+
 	}
 }
