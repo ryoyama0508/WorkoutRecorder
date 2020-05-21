@@ -42,9 +42,6 @@ func UserDataCheck(
 	dbname,
 	userName, email, password string,
 ) (bool, error) {
-	fmt.Println(userName)
-	fmt.Println(email)
-	fmt.Println(password)
 	var pw string
 	if err := squirrel.Select("hashed_password").
 		From("users").

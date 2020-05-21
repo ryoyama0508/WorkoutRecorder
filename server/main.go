@@ -37,7 +37,7 @@ func main() {
 
 	engine.Static("/assets", "./assets")
 
-	engine.LoadHTMLGlob("../client/main/*.html")
+	engine.LoadHTMLGlob("../client/templates/*.html")
 
 	//html page responces
 	engine.GET("/signup", func(ctx *gin.Context) {
@@ -59,7 +59,7 @@ func main() {
 		ctx.HTML(http.StatusOK, "record.html", gin.H{})
 	})
 	engine.GET("/archive", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "achieve.html", gin.H{})
+		ctx.HTML(http.StatusOK, "archive.html", gin.H{})
 	})
 	engine.GET("/analysis", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "analysis.html", gin.H{})
