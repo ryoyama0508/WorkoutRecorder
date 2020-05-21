@@ -24,19 +24,6 @@ func main() {
 	store := cookie.NewStore([]byte("secret"))
 	engine.Use(sessions.Sessions("mysession", store))
 
-	engine.POST("/login", func(ctx *gin.Context) {
-		session := sessions.Default(ctx)
-		cookie := &http.Cookie{
-			Name:  "hoge",
-			Value: "bar",
-		}
-		http.SetCookie(ctx.Writer, cookie)
-
-		session.Set("loginUser", ctx.PostForm("userId")) //search at header or body when it exists
-		session.Save()
-		ctx.String(http.StatusOK, "log in")
-	})
-
 	engine.Static("/assets", "./assets")
 
 	engine.LoadHTMLGlob("../client/templates/*.html")
