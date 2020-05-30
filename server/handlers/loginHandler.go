@@ -28,7 +28,8 @@ func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 
 			if session.Get("SID") == nil {
 				session.Set("SID", userID)
-				session.Set("userName", userName)
+				session.Set("username", userName)
+				fmt.Println(userName)
 				session.Save()
 			} else {
 				fmt.Println("have session ID somehow")

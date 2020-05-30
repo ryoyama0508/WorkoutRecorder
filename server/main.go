@@ -41,16 +41,12 @@ func main() {
 
 	engine.GET("/logout", handlers.HandleLogout())
 
-	engine.GET("/home", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "home.html", gin.H{})
-	})
+	engine.GET("/home", handlers.HandleHome())
 
 	//record post and page change at the same time
 	engine.GET("/record/see", handlers.HandleRecordPage())
 
-	engine.GET("/archive", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "archive.html", gin.H{})
-	})
+	engine.GET("/archive", handlers.HandleArchive())
 	engine.GET("/analysis", handlers.HandleAnalysis(db))
 
 	engine.POST("/record/post", handlers.HandleRecord(db))
