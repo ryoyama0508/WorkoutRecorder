@@ -39,28 +39,15 @@ func main() {
 	})
 	engine.POST("/login/enter", handlers.HandleLogin(db))
 
-	engine.GET("/logout", func(ctx *gin.Context) {
-		session := sessions.Default(ctx)
-		session.Clear()
-		session.Save()
-		ctx.String(http.StatusOK, "log out")
-	})
+	engine.GET("/logout", handlers.HandleLogout())
 
 	engine.GET("/home", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "home.html", gin.H{})
 	})
 
 	//record post and page change at the same time
-	engine.GET("/record/see", func(ctx *gin.Context) {
-		session := sessions.Default(ctx)
-		if session.Get("SID") == nil {
-			fmt.Println("error! doesnt have sess id")
-		} else {
-			fmt.Println(session.Get("SID"))
-			fmt.Println(session.Get("userName"))
-		}
-		ctx.HTML(http.StatusOK, "record.html", gin.H{"username": session.Get("userName")})
-	})
+	engine.GET("/record/see", handlers.HandleRecordPage())
+
 	engine.GET("/archive", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "archive.html", gin.H{})
 	})
