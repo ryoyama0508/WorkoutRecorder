@@ -44,7 +44,7 @@ func UserDataCheck(
 ) (bool, uint, error) {
 	var userID uint
 	var pw string
-	if err := squirrel.Select("hashed_password").
+	if err := squirrel.Select("id", "hashed_password").
 		From("users").
 		Where(squirrel.Eq{"name": userName, "email": email, "deleted_at": nil}).
 		RunWith(db).

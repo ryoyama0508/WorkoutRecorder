@@ -52,7 +52,14 @@ func main() {
 
 	//record post and page change at the same time
 	engine.GET("/record/see", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "record.html", gin.H{})
+		session := sessions.Default(ctx)
+		if session.Get("SID") == nil {
+			fmt.Println("error! doesnt have sess id")
+		} else {
+			fmt.Println(session.Get("SID"))
+			fmt.Println(session.Get("userName"))
+		}
+		ctx.HTML(http.StatusOK, "record.html", gin.H{"username": session.Get("userName")})
 	})
 	engine.GET("/archive", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "archive.html", gin.H{})

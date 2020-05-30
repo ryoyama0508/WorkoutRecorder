@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"database/sql"
-	"log"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-contrib/sessions"
@@ -22,19 +22,18 @@ func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 		if err != nil {
 			errors.WithStack(err)
 		}
-		cookie, err := ctx.Request.Cookie("SID")
-
-		if err != nil {
-			log.Fatal("Cookie: ", err)
-		}
-
-		if cookie.Value != "" {
-			session := sessions.Default(ctx)
-			session.Set("SID", userID)
-			session.Save()
-		}
 
 		if isCorrespond == true {
+			session := sessions.Default(ctx)
+
+			if session.Get("SID") == nil {
+				session.Set("SID", userID)
+				session.Set("userName", userName)
+				session.Save()
+			} else {
+				fmt.Println("have session ID somehow")
+			}
+
 			ctx.HTML(http.StatusOK, "home.html", gin.H{
 				"username": userName,
 			})
