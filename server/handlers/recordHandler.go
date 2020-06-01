@@ -2,11 +2,13 @@ package handlers
 
 import (
 	"database/sql"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/usecases"
@@ -35,9 +37,25 @@ func HandleRecord(db *sql.DB) func(ctx *gin.Context) {
 			return
 		}
 
-		_, err := usecases.StoreAndGetData(ctx.Request.Context(), db, input)
-		if err != nil {
-			errors.WithStack(err)
+		session := sessions.Default(ctx)
+
+		if session.Get("SID") != nil {
+			encodedUserID := fmt.Sprintf("%v", session.Get("SID"))
+			userID, err := hex.DecodeString(encodedUserID)
+			if err != nil {
+				fmt.Println("failed decode UserName")
+			}
+
+			_, err = usecases.StoreAndGetData(
+				ctx.Request.Context(), db, string(userID), input,
+			)
+			if err != nil {
+				errors.WithStack(err)
+			}
+
+		} else {
+			fmt.Println("doesnt have session ID")
 		}
+
 	}
 }

@@ -2,8 +2,10 @@ package handlers
 
 import (
 	"database/sql"
+	"encoding/hex"
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -27,9 +29,10 @@ func HandleLogin(db *sql.DB) func(ctx *gin.Context) {
 			session := sessions.Default(ctx)
 
 			if session.Get("SID") == nil {
-				session.Set("SID", userID)
+				userIDStr := strconv.FormatUint(uint64(userID), 10)
+				hx := hex.EncodeToString([]byte(userIDStr))
+				session.Set("SID", hx)
 				session.Set("username", userName)
-				fmt.Println(userName)
 				session.Save()
 			} else {
 				fmt.Println("have session ID somehow")

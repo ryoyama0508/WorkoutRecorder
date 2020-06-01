@@ -14,11 +14,16 @@ import (
 func FreeWeightRecord(
 	ctx context.Context,
 	db *sql.DB,
-	/* userID int, */ exercise, weightStr, repStr, setStr string,
+	userIDStr, exercise, weightStr, repStr, setStr string,
 ) (*int, error) {
-	/* if userID == 0 {
+	if userIDStr == "" {
 		return nil, nil
-	} */
+	}
+
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		return nil, err
+	}
 	weight, err := strconv.ParseFloat(weightStr, 32)
 	if err != nil {
 		fmt.Println("float error")
@@ -34,8 +39,8 @@ func FreeWeightRecord(
 		return nil, err
 	}
 	result, err := squirrel.Insert(exercise).
-		Columns("weight", "reps", "sets").
-		Values(float32(weight), reps, sets).
+		Columns("user_id", "weight", "reps", "sets").
+		Values(userID, float32(weight), reps, sets).
 		RunWith(db).
 		ExecContext(ctx)
 

@@ -14,11 +14,16 @@ import (
 func BodyWeightRecord(
 	ctx context.Context,
 	db *sql.DB,
-	/* userID int, */ exercise, repStr, setStr string,
+	userIDStr, exercise, repStr, setStr string,
 ) (*int, error) {
-	/* if userID == 0 {
+	if userIDStr == "" {
 		return nil, nil
-	} */
+	}
+
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		return nil, err
+	}
 
 	reps, err := strconv.Atoi(repStr)
 	if err != nil {
@@ -30,8 +35,8 @@ func BodyWeightRecord(
 		return nil, err
 	}
 	result, err := squirrel.Insert(exercise).
-		Columns("reps", "sets").
-		Values(reps, sets).
+		Columns("user_id", "reps", "sets").
+		Values(userID, reps, sets).
 		RunWith(db).
 		ExecContext(ctx)
 

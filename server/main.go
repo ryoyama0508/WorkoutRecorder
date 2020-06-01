@@ -3,7 +3,6 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"net/http"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
@@ -28,28 +27,22 @@ func main() {
 
 	engine.LoadHTMLGlob("../client/templates/*.html")
 
-	//html page responces
-	engine.GET("/signup", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "signup.html", gin.H{})
-	})
+	engine.GET("/signup", handlers.HandleSignUpPageServe())
 	engine.POST("/signup/post", handlers.HandleSignUp(db))
 
-	engine.GET("/login/see", func(ctx *gin.Context) {
-		ctx.HTML(http.StatusOK, "login.html", gin.H{})
-	})
+	engine.GET("/login", handlers.HandleLoginPageServe())
 	engine.POST("/login/enter", handlers.HandleLogin(db))
 
 	engine.GET("/logout", handlers.HandleLogout())
 
 	engine.GET("/home", handlers.HandleHome())
 
-	//record post and page change at the same time
-	engine.GET("/record/see", handlers.HandleRecordPage())
+	engine.GET("/record", handlers.HandleRecordPage())
+	engine.POST("/record/post", handlers.HandleRecord(db))
 
 	engine.GET("/archive", handlers.HandleArchive())
-	engine.GET("/analysis", handlers.HandleAnalysis(db))
 
-	engine.POST("/record/post", handlers.HandleRecord(db))
+	engine.GET("/analysis", handlers.HandleAnalysis(db))
 
 	engine.Run(":8080")
 

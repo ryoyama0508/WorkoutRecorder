@@ -105,7 +105,7 @@ type IDs struct {
 }
 
 //StoreAndGetData ...
-func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInput) (IDs, error) {
+func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []HandleRecordInput) (IDs, error) {
 	//goroutine???
 	var crunchID *int
 	var deadLiftID *int
@@ -122,6 +122,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			crunchID, err = tools.BodyWeightRecord(
 				ctx,
 				db,
+				userID,
 				"crunch",
 				records[i].Reps,
 				records[i].Sets,
@@ -133,6 +134,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			deadLiftID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"dead_lift",
 				records[i].Weight,
 				records[i].Reps,
@@ -145,6 +147,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			chinUpID, err = tools.BodyWeightRecord(
 				ctx,
 				db,
+				userID,
 				"chin_up",
 				records[i].Reps,
 				records[i].Sets,
@@ -156,6 +159,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			dumbellCurlID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"dumbell_curl",
 				records[i].Weight,
 				records[i].Reps,
@@ -168,6 +172,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			benchPressID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"bench_press",
 				records[i].Weight,
 				records[i].Reps,
@@ -180,6 +185,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			hipThrustID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"hip_thrust",
 				records[i].Weight,
 				records[i].Reps,
@@ -192,6 +198,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			squatID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"squat",
 				records[i].Weight,
 				records[i].Reps,
@@ -204,6 +211,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			shoulderPressID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"shoulder_press",
 				records[i].Weight,
 				records[i].Reps,
@@ -216,6 +224,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, records []HandleRecordInpu
 			cablePressDownID, err = tools.FreeWeightRecord(
 				ctx,
 				db,
+				userID,
 				"cable_press_down",
 				records[i].Weight,
 				records[i].Reps,
