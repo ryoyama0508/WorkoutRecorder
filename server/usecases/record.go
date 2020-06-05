@@ -119,7 +119,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 	var err error
 	for i := 0; i < len(records); i++ {
 		if records[i].Name == "crunch" {
-			crunchID, err = tools.BodyWeightRecord(
+			crunchID, err = tools.BodyWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -131,7 +131,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "dead lift" {
-			deadLiftID, err = tools.FreeWeightRecord(
+			deadLiftID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -144,7 +144,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "chin up" {
-			chinUpID, err = tools.BodyWeightRecord(
+			chinUpID, err = tools.BodyWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -156,7 +156,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "dumbell curl" {
-			dumbellCurlID, err = tools.FreeWeightRecord(
+			dumbellCurlID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -169,7 +169,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "bench press" {
-			benchPressID, err = tools.FreeWeightRecord(
+			benchPressID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -182,7 +182,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "hip thrust" {
-			hipThrustID, err = tools.FreeWeightRecord(
+			hipThrustID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -195,7 +195,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "squat" {
-			squatID, err = tools.FreeWeightRecord(
+			squatID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -208,7 +208,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else if records[i].Name == "shoulder press" {
-			shoulderPressID, err = tools.FreeWeightRecord(
+			shoulderPressID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,
@@ -221,7 +221,7 @@ func StoreAndGetData(ctx context.Context, db *sql.DB, userID string, records []H
 				return IDs{}, errors.WithStack(err)
 			}
 		} else {
-			cablePressDownID, err = tools.FreeWeightRecord(
+			cablePressDownID, err = tools.FreeWeightRecordInsert(
 				ctx,
 				db,
 				userID,

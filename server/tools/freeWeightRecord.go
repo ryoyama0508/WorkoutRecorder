@@ -10,8 +10,8 @@ import (
 	"github.com/pkg/errors"
 )
 
-//FreeWeightRecord is tool func for recording
-func FreeWeightRecord(
+//FreeWeightRecordInsert is tool func for recording
+func FreeWeightRecordInsert(
 	ctx context.Context,
 	db *sql.DB,
 	userIDStr, exercise, weightStr, repStr, setStr string,

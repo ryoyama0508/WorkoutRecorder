@@ -10,8 +10,8 @@ import (
 	"github.com/pkg/errors"
 )
 
-//BodyWeightRecord is tool func for recording
-func BodyWeightRecord(
+//BodyWeightRecordInsert is ...
+func BodyWeightRecordInsert(
 	ctx context.Context,
 	db *sql.DB,
 	userIDStr, exercise, repStr, setStr string,
@@ -53,4 +53,42 @@ func BodyWeightRecord(
 
 	id := int(id64)
 	return &id, nil
+}
+
+type BodyWeightRecordGetOutput struct {
+	weight []int8
+	reps   []int8
+}
+
+// BodyWeightRecordGet is ...
+func BodyWeightRecordGet(
+	ctx context.Context,
+	db *sql.DB,
+	userIDStr, exercise string,
+) (*int, error) {
+	if userIDStr == "" {
+		return nil, nil
+	}
+
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		return nil, err
+	}
+	output := BodyWeightRecordGetOutput{}
+	rowScanner := squirrel.Select("weight", "reps").
+		From(exercise).
+		Where(squirrel.Eq{"user_id": userID, "deleted_at": nil}).
+		RunWith(db).
+		QueryRow()
+
+	if err := rowScanner.Scan(
+		&output.weight,
+		&output.reps,
+	); err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+	fmt.Println(output)
+
+	return nil, nil
 }
