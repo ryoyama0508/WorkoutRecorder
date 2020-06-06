@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/Masterminds/squirrel"
 	"github.com/pkg/errors"
@@ -55,40 +56,50 @@ func BodyWeightRecordInsert(
 	return &id, nil
 }
 
-type BodyWeightRecordGetOutput struct {
-	weight *[]int8
-	reps   *[]int8
-}
-
 // BodyWeightRecordGet is ...
 func BodyWeightRecordGet(
 	ctx context.Context,
 	db *sql.DB,
 	userIDStr, exercise string,
-) (*int, error) {
+) error {
 	if userIDStr == "" {
-		return nil, nil
+		return nil
 	}
 
 	userID, err := strconv.Atoi(userIDStr)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	output := &BodyWeightRecordGetOutput{}
-	rowScanner := squirrel.Select("weight", "reps").
+	output := make(map[float64]time.Time)
+	queryRow := squirrel.Select("weight", "reps", "created_at").
 		From(exercise).
-		Where(squirrel.Eq{"user_id": userID, "deleted_at": nil}).
+		Where(squirrel.Eq{"user_id": userID, "deleted_at": nil})
+
+	row, err := queryRow.OrderBy("created_at desc").
 		RunWith(db).
-		QueryRow()
+		QueryContext(ctx)
 
-	if err := rowScanner.Scan(
-		&output.weight,
-		&output.reps,
-	); err != nil {
-		fmt.Println(err)
-		return nil, err
+	if err != nil {
+		return err
 	}
-	fmt.Println(output)
 
-	return nil, nil
+	for row.Next() {
+		var weight uint
+		var reps uint
+		var createdAt time.Time
+		if err := row.Scan(
+			&weight,
+			&reps,
+			&createdAt,
+		); err != nil {
+			return errors.WithStack(err)
+		}
+		max := float64(weight) * (1 + (float64(reps) / 30))
+
+		//append into map
+	}
+
+	fmt.Println(output, "output")
+
+	return nil
 }
