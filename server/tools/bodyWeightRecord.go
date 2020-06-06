@@ -56,8 +56,8 @@ func BodyWeightRecordInsert(
 }
 
 type BodyWeightRecordGetOutput struct {
-	weight []int8
-	reps   []int8
+	weight *[]int8
+	reps   *[]int8
 }
 
 // BodyWeightRecordGet is ...
@@ -74,7 +74,7 @@ func BodyWeightRecordGet(
 	if err != nil {
 		return nil, err
 	}
-	output := BodyWeightRecordGetOutput{}
+	output := &BodyWeightRecordGetOutput{}
 	rowScanner := squirrel.Select("weight", "reps").
 		From(exercise).
 		Where(squirrel.Eq{"user_id": userID, "deleted_at": nil}).
