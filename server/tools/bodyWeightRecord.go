@@ -56,6 +56,12 @@ func BodyWeightRecordInsert(
 	return &id, nil
 }
 
+type rawTime []byte
+
+func (t rawTime) Time() (time.Time, error) {
+	return time.Parse("2006-01-02 15:04:05", string(t))
+}
+
 // BodyWeightRecordGet is ...
 func BodyWeightRecordGet(
 	ctx context.Context,
@@ -82,34 +88,39 @@ func BodyWeightRecordGet(
 		return err
 	}
 
-	var rec [][]float64
+	rec := make([][]float64, 8)
 	i := 0
 	j := 0
 	var start time.Time
 	for row.Next() {
 		var weight uint
 		var reps uint
-		var createdAt time.Time
+		var createdAtRaw rawTime
 		if err := row.Scan(
 			&weight,
 			&reps,
-			&createdAt,
+			&createdAtRaw,
 		); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
+
 		oneRM := float64(weight) * (1 + (float64(reps) / 30))
+
+		createdAt, err := createdAtRaw.Time()
+		if err != nil {
+			panic(err)
+		}
 
 		if j == 0 {
 			start = time.Now()
 		}
 
 		if createdAt.Before(start.Add((-24 * 10) * time.Hour)) {
+			start = start.Add((-24 * 10) * time.Hour)
 			i++
-			j = 0
-		} else {
-			rec[i][j] = oneRM
-			j++
 		}
+
+		rec[i] = append(rec[i], oneRM)
 	}
 
 	fmt.Println(rec, "output")

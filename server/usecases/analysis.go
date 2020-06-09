@@ -3,14 +3,16 @@ package usecases
 import (
 	"context"
 	"database/sql"
+	"fmt"
 
 	"github.com/ryoyama0508/WorkoutRecorder/WorkoutRecorder/server/tools"
 )
 
 //Analysis ...
 func Analysis(ctx context.Context, db *sql.DB, userID string) {
-
 	//excersice funcs
-	tools.BodyWeightRecordGet(ctx, db, userID, "bench_press")
-
+	err := tools.BodyWeightRecordGet(ctx, db, userID, "bench_press")
+	if err != nil {
+		fmt.Println(err)
+	}
 }
