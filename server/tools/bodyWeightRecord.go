@@ -3,7 +3,7 @@ package tools
 import (
 	"context"
 	"database/sql"
-	"fmt"
+	"math"
 	"strconv"
 	"time"
 
@@ -42,13 +42,11 @@ func BodyWeightRecordInsert(
 		ExecContext(ctx)
 
 	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 
 	id64, err := result.LastInsertId()
 	if err != nil {
-		fmt.Println("get id error")
 		return nil, errors.WithStack(err)
 	}
 
@@ -56,12 +54,17 @@ func BodyWeightRecordInsert(
 	return &id, nil
 }
 
+//Round ...
+func Round(x, unit float64) float64 {
+	return math.Round(x/unit) * unit
+}
+
 // BodyWeightRecordGet is ...
 func BodyWeightRecordGet(
 	ctx context.Context,
 	db *sql.DB,
 	userIDStr, exercise string,
-) ([]uint, error) {
+) ([]float64, error) {
 	if userIDStr == "" {
 		return nil, nil
 	}
@@ -113,25 +116,19 @@ func BodyWeightRecordGet(
 		rec[i] = append(rec[i], reps)
 	}
 
-	fmt.Println(rec, "rec")
-
-	avg := make([]uint, 8)
+	avg := make([]float64, 8)
 
 	for i = 0; i < len(rec); i++ {
 		var sum uint
 		for j = 0; j < len(rec[i]); j++ {
-			fmt.Println(rec[i][j], "print")
 			sum += rec[i][j]
 		}
-		fmt.Println(sum, "sum")
 		if len(rec[i]) != 0 {
-			avg[i] = sum / uint(len(rec[i]))
+			avg[i] = Round(float64(sum)/float64(len(rec[i])), 0.5)
 		} else {
 			avg[i] = 0
 		}
 	}
-
-	fmt.Println(avg, "avg")
 
 	return avg, nil
 }

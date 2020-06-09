@@ -3,7 +3,7 @@ package tools
 import (
 	"context"
 	"database/sql"
-	"fmt"
+	"math"
 	"strconv"
 	"time"
 
@@ -27,7 +27,7 @@ func FreeWeightRecordInsert(
 	}
 	weight, err := strconv.ParseFloat(weightStr, 32)
 	if err != nil {
-		fmt.Println("float error")
+		return nil, err
 	}
 
 	reps, err := strconv.Atoi(repStr)
@@ -46,7 +46,6 @@ func FreeWeightRecordInsert(
 		ExecContext(ctx)
 
 	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 
@@ -96,8 +95,8 @@ func FreeWeightRecordGet(
 	j := 0
 	var start time.Time
 	for row.Next() {
-		var weight uint
-		var reps uint
+		var weight float64
+		var reps float64
 		var createdAtRaw rawTime
 		if err := row.Scan(
 			&weight,
@@ -107,7 +106,7 @@ func FreeWeightRecordGet(
 			return nil, err
 		}
 
-		oneRM := float64(weight) * (1 + (float64(reps) / 30))
+		oneRM := weight * (1 + (reps / 30))
 
 		createdAt, err := createdAtRaw.Time()
 		if err != nil {
@@ -125,7 +124,6 @@ func FreeWeightRecordGet(
 
 		rec[i] = append(rec[i], oneRM)
 	}
-	fmt.Println(rec, "rec")
 
 	avg := make([]float64, 8)
 
@@ -134,15 +132,12 @@ func FreeWeightRecordGet(
 		for j = 0; j < len(rec[i]); j++ {
 			sum += rec[i][j]
 		}
-		fmt.Println(sum, "sum")
 		if len(rec[i]) != 0 {
-			avg[i] = sum / float64(len(rec[i]))
+			avg[i] = math.Round(sum / float64(len(rec[i])))
 		} else {
 			avg[i] = 0
 		}
 	}
-
-	fmt.Println(avg, "avg")
 
 	return avg, nil
 }
