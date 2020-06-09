@@ -56,27 +56,21 @@ func BodyWeightRecordInsert(
 	return &id, nil
 }
 
-type rawTime []byte
-
-func (t rawTime) Time() (time.Time, error) {
-	return time.Parse("2006-01-02 15:04:05", string(t))
-}
-
 // BodyWeightRecordGet is ...
 func BodyWeightRecordGet(
 	ctx context.Context,
 	db *sql.DB,
 	userIDStr, exercise string,
-) error {
+) ([]uint, error) {
 	if userIDStr == "" {
-		return nil
+		return nil, nil
 	}
 
 	userID, err := strconv.Atoi(userIDStr)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	queryRow := squirrel.Select("weight", "reps", "created_at").
+	queryRow := squirrel.Select("reps", "created_at").
 		From(exercise).
 		Where(squirrel.Eq{"user_id": userID, "deleted_at": nil})
 
@@ -85,26 +79,22 @@ func BodyWeightRecordGet(
 		QueryContext(ctx)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	rec := make([][]float64, 8)
+	rec := make([][]uint, 8)
 	i := 0
 	j := 0
 	var start time.Time
 	for row.Next() {
-		var weight uint
 		var reps uint
 		var createdAtRaw rawTime
 		if err := row.Scan(
-			&weight,
 			&reps,
 			&createdAtRaw,
 		); err != nil {
-			return err
+			return nil, err
 		}
-
-		oneRM := float64(weight) * (1 + (float64(reps) / 30))
 
 		createdAt, err := createdAtRaw.Time()
 		if err != nil {
@@ -120,10 +110,28 @@ func BodyWeightRecordGet(
 			i++
 		}
 
-		rec[i] = append(rec[i], oneRM)
+		rec[i] = append(rec[i], reps)
 	}
 
-	fmt.Println(rec, "output")
+	fmt.Println(rec, "rec")
 
-	return nil
+	avg := make([]uint, 8)
+
+	for i = 0; i < len(rec); i++ {
+		var sum uint
+		for j = 0; j < len(rec[i]); j++ {
+			fmt.Println(rec[i][j], "print")
+			sum += rec[i][j]
+		}
+		fmt.Println(sum, "sum")
+		if len(rec[i]) != 0 {
+			avg[i] = sum / uint(len(rec[i]))
+		} else {
+			avg[i] = 0
+		}
+	}
+
+	fmt.Println(avg, "avg")
+
+	return avg, nil
 }

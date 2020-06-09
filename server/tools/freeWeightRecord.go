@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"strconv"
+	"time"
 
 	"github.com/Masterminds/squirrel"
 	"github.com/pkg/errors"
@@ -56,4 +57,92 @@ func FreeWeightRecordInsert(
 
 	id := int(id64)
 	return &id, nil
+}
+
+type rawTime []byte
+
+func (t rawTime) Time() (time.Time, error) {
+	return time.Parse("2006-01-02 15:04:05", string(t))
+}
+
+// FreeWeightRecordGet is ...
+func FreeWeightRecordGet(
+	ctx context.Context,
+	db *sql.DB,
+	userIDStr, exercise string,
+) ([]float64, error) {
+	if userIDStr == "" {
+		return nil, nil
+	}
+
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		return nil, err
+	}
+	queryRow := squirrel.Select("weight", "reps", "created_at").
+		From(exercise).
+		Where(squirrel.Eq{"user_id": userID, "deleted_at": nil})
+
+	row, err := queryRow.OrderBy("created_at desc").
+		RunWith(db).
+		QueryContext(ctx)
+
+	if err != nil {
+		return nil, err
+	}
+
+	rec := make([][]float64, 8)
+	i := 0
+	j := 0
+	var start time.Time
+	for row.Next() {
+		var weight uint
+		var reps uint
+		var createdAtRaw rawTime
+		if err := row.Scan(
+			&weight,
+			&reps,
+			&createdAtRaw,
+		); err != nil {
+			return nil, err
+		}
+
+		oneRM := float64(weight) * (1 + (float64(reps) / 30))
+
+		createdAt, err := createdAtRaw.Time()
+		if err != nil {
+			panic(err)
+		}
+
+		if j == 0 {
+			start = time.Now()
+		}
+
+		if createdAt.Before(start.Add((-24 * 10) * time.Hour)) {
+			start = start.Add((-24 * 10) * time.Hour)
+			i++
+		}
+
+		rec[i] = append(rec[i], oneRM)
+	}
+	fmt.Println(rec, "rec")
+
+	avg := make([]float64, 8)
+
+	for i = 0; i < len(rec); i++ {
+		var sum float64
+		for j = 0; j < len(rec[i]); j++ {
+			sum += rec[i][j]
+		}
+		fmt.Println(sum, "sum")
+		if len(rec[i]) != 0 {
+			avg[i] = sum / float64(len(rec[i]))
+		} else {
+			avg[i] = 0
+		}
+	}
+
+	fmt.Println(avg, "avg")
+
+	return avg, nil
 }
